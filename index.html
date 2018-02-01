@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="./font/iconfont.css">
     <link rel="stylesheet" href="./default/style.css" />
     <link rel="stylesheet" href="./css/index.css">
-    <script src="./amazeui/js/jquery.min.js"></script>
-    <script src="./amazeui/js/amazeui.min.js"></script>
+    <script src="./js/vue.js"></script>
+    
 </head>
 
 <body>
@@ -33,23 +33,19 @@
             </div>
         </header>
         <!-- banner -->
-        <div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{&quot;directionNav&quot;:false}'>
-            <ul class="am-slides">
-                <li>
-                    <img src="default/bing-1.jpg">
-                </li>
-                <li>
-                    <img src="default/bing-1.jpg">
-                </li>
-                <li>
-                    <img src="default/bing-1.jpg">
-                </li>
-                <li>
-                    <img src="default/bing-1.jpg">
-                </li>
-            </ul>
+        <div class="carousel-wrap" id="carousel">
+            <transition-group tag="ul" class='slide-ul' name="list">
+            <li v-for="(list,index) in binner" :key="index" v-show="index===currentIndex" >
+                <a :href="list.url" >
+                <img :src="list.image">
+                </a>
+            </li>
+            </transition-group>
+            <div class="carousel-items">
+            <span v-for="(item,index) in binner.length" :class="{'active':index===currentIndex}" ></span>
+            </div>
         </div>
-        <div class="title">热门单品</div>
+        <div class="title">商品列表</div>
         <div class="am-cf am-g">
             <ul class="am-avg-sm-2 my-shop-product-list">
                 <li>
@@ -199,13 +195,14 @@
                     </a>
                 </li>
             </ul>
-            <script>
-                function showFooterNav() {
-                    $("#footNav").toggle();
-                }
-            </script>
+         
+           
+            
         </div>
     </div>
+  
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 
 </html>

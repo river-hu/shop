@@ -258,7 +258,7 @@ textarea {
 
 a:focus,
 a:hover {
-    color: #095f8a
+    color: #be2222
 }
 
 a:focus {
@@ -2240,10 +2240,10 @@ output {
 .am-form textarea:focus,
 .am-form-field:focus {
     background-color: #fefffe;
-    border-color: #3bb4f2;
+    border-color: #ccc;
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 5px rgba(59, 180, 242, .3);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 5px rgba(59, 180, 242, .3)
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 5px rgba(196, 122, 122, 0.3);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 5px rgba(196, 122, 122, 0.3);
 }
 
 .am-form input[type=number]::-webkit-input-placeholder,
@@ -11046,7 +11046,7 @@ label.am-radio {
 
 .am-selected-list li.am-checked .am-icon-check {
     opacity: 1;
-    color: #0e90d2
+    color: #d20e0e
 }
 
 .am-selected-list li.am-disabled {
@@ -11269,8 +11269,8 @@ tbody.am-collapse.am-in {
 .am-datepicker-next-icon:hover,
 .am-datepicker-prev-icon:hover,
 .am-datepicker-select:hover {
-    color: #0c80ba;
-    background: rgba(154, 217, 248, .5)
+    color: #ba0c0c;
+    background: rgba(248, 154, 154, 0.5)
 }
 
 .am-datepicker td span.am-datepicker-old {
@@ -11440,8 +11440,8 @@ tbody.am-collapse.am-in {
 .am-datepicker-success .am-datepicker-next-icon:hover,
 .am-datepicker-success .am-datepicker-prev-icon:hover,
 .am-datepicker-success .am-datepicker-select:hover {
-    background: rgba(165, 216, 165, .5);
-    color: #367b36
+    background: rgba(189, 189, 189, 0.5);
+    color: #666666
 }
 
 .am-datepicker-danger tr.am-datepicker-header {
@@ -11523,7 +11523,7 @@ tbody.am-collapse.am-in {
 .am-datepicker-warning .am-datepicker-prev-icon:hover,
 .am-datepicker-warning .am-datepicker-select:hover {
     background: rgba(248, 180, 126, .5);
-    color: #a14c09
+    color: #494948
 }
 
 .am-datepicker>div span.am-datepicker-hour {

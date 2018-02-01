@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="./font/iconfont.css">
 <link rel="stylesheet" href="default/style.css"/>
 <link rel="stylesheet" href="./css/sort.css">
+<script src="./js/vue.js"></script>
 <script src="amazeui/js/jquery.min.js"></script>
 <script src="amazeui/js/amazeui.min.js"></script>
 </head>
@@ -29,9 +30,9 @@
     <div class="gray-panel">
     	<div class="my-search-title-panel">
         	<div class="am-input-group">
-              <input type="text" class="am-form-field am-radius" placeholder="商品搜索">
+              <input type="text" v-model="search" class="am-form-field am-radius" placeholder="商品搜索">
               <span class="am-input-group-btn">
-                <button class="am-btn am-radius" type="button"><span class="am-icon-search"></span></button>
+                <button class="am-btn am-radius" type="button" @click="search_shop"><span class="am-icon-search"></span></button>
               </span>
             </div>
         </div>
@@ -139,12 +140,10 @@
           </a>
       </li>
       </ul>
-      <script>
-	  	function showFooterNav(){
-			$("#footNav").toggle();
-		}
-	  </script>
     </div>
+    
 </div>
+
+<script src="./js/sort.js"></script>
 </body>
 </html>

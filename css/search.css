@@ -5,7 +5,11 @@
     border-top:none;
 }
 .groupby-info-panle h3{
-    margin-top: 10px;
+    margin-top: 5px;
     font-size: 16px;
     margin-bottom: 10px;
+}
+.gray-panel {
+    background-color: #fff;
+    overflow: hidden;
 }

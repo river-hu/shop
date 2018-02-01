@@ -160,7 +160,7 @@ position: relative;
 		.cart-list-panel{ padding:0 10px}
 	.cart-panel-ul > li{ height:130px;}
 		.cart-panel-ul > li .imgpanel{ width:120px; height:120px; float:left; text-align:center;}
-		.cart-panel-ul > li .infopanel{ width:auto; float:left; padding-top:5px}
+		.cart-panel-ul > li .infopanel{ width:auto; float:left; padding-top:10px}
 			.cart-panel-ul > li .infopanel h3{ font-size:13px; color:#333; margin-bottom:0.2rem; font-weight: normal;}
 			.cart-panel-ul > li .infopanel p{ font-size:12px; color:#888888; margin:0px}
 	.cart_foot{ font-size:13px; line-height:35px; background-color:#fff}

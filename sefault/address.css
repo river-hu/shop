@@ -1,0 +1,112 @@
+.my-header{ background-color:#cd1317}
+.iconfont{
+    font-size: 26px;
+}
+  .container{ width:100%;max-width:640px; margin:0 auto; }
+  .am-panel {
+    background-color: #fff;
+    border: 1px solid rgb(214, 214, 214);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    margin: 10px;
+    border-radius:5px ;
+    position: relative;
+    transition: all 5s;
+}
+.am-panel-bd {
+    padding: 0.25rem;
+    box-shadow: 1px 1px 7px 0 #c7c7c7;
+}
+.am-panel-bd p{
+    margin: 0;
+    padding-left: 10px;
+    font-size: 12px;
+}
+.am-panel-bd p span{
+    color: #cd1317;
+}
+.am-panel .set{
+    position: absolute;
+    right:20px;
+    top: 20px;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    background: #efefef;
+    color: #535353;
+}
+input,button{
+    outline: none;
+}
+.am-form-icon{
+    margin: 10px 20px;
+}
+.am-form-icon .iconfont{
+    position: absolute;
+    left: .3em;
+    top: 50%;
+    display: block;
+    margin-top: -.5em;
+    line-height: 1;
+    z-index: 2;
+    font-size:2.0rem;
+}
+
+.dizhi{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.dizhi>*{
+    display: flex;
+    width: 30%;
+}
+@media only screen and (min-width: 641px)
+{
+.am-form-inline .am-form-group {
+    display: flex;
+}
+}
+.dizhi select{
+    width: 30%;
+    
+    margin-bottom: 10px;
+}
+.setbtn{
+    display: flex;
+    justify-content: space-around;
+    width: 87%;
+}
+.setbtn button{
+    margin: 5px;
+    flex-shrink:1;
+    font-size: 14px;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: all .5s linear;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  transform-origin: 0% 0% ;
+  transform: scale(1,0) ;
+}
+.am-header .am-header-title{
+    font-size: 16px;
+}
+.am-form-icon [class*=am-icon-] {
+    position: absolute;
+    right: .5em;
+    top: 50%;
+    display: block;
+    margin-top: -.5em;
+    line-height: 1;
+    z-index: 2;
+}
+.am-form select:focus{
+    border-color: #ccc;
+}
+
+
+
+
+
+
+

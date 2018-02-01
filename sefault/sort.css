@@ -1,0 +1,23 @@
+.my-category-dl dd img{
+    width: 60px;
+    height: 60px;
+    display: block;
+}
+.my-category-dl dd{
+    border: 1px solid rgb(228, 228, 228);
+    margin: 5px;
+    text-align: center;
+    display: inline-block;
+
+}
+.my-category-dl dt{
+    margin-bottom: 10px;
+    flex-shrink:0;
+    width: 100%;
+
+}
+.my-category-dl{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

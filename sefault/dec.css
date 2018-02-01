@@ -1,0 +1,15 @@
+.iconfont{
+    font-size: 26px;
+}
+.am-comment-bd {
+    padding: 15px;
+    overflow: hidden;
+    padding-bottom: 0;
+}
+.score .iconfont{
+    font-size: 18px;
+}
+.score{
+    text-align: right;
+    color: #f37b1d;
+}

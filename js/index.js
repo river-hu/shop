@@ -45,6 +45,7 @@ var vm = new Vue({
             vm.binner = response.data.data;
             hide_loading();//加载完成
         })
+        axios.get("")
         this.$nextTick(function(){//启动轮播图
             vm.timer = setInterval(function(){
                 vm.autoPlay()

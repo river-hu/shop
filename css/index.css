@@ -78,3 +78,36 @@ ul{
   .list-leave {
     transform: translateX(0)
   }
+  .list2-enter-to {
+    transition: all 1s ease;
+    transform: translateX(0);
+  }
+  
+  .list2-leave-active {
+    transition: all 1s ease;
+    transform: translateX(100%)
+  }
+  
+  .list2-enter {
+    transform: translateX(-100%)
+  }
+  
+  .list2-leave {
+    transform: translateX(0%)
+  }
+  .am-pagination-select .am-pagination-select select {
+    border: 1px solid rgb(150, 150, 150);
+    box-sizing: border-box;
+    width: 70px;
+     background-color: #fff;
+    appearance: none;
+    padding-left: 18px;
+}
+.am-pagination-select .am-pagination-select select :focus{
+  outline: none;
+  border: 1px solid rgb(150, 150, 150);
+}
+:focus {
+  outline: none;
+
+}

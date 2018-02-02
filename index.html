@@ -16,13 +16,17 @@
     <link rel="stylesheet" href="./default/style.css" />
     <link rel="stylesheet" href="./css/index.css">
     <script src="./js/vue.js"></script>
-    
+    <script src="./js/my.js"></script>
 </head>
 
 <body>
     <div class="container">
+        <!-- 加载动画 -->
+        <div id="loading">
+            <img src="./font/loading.gif" alt="加载中...">
+        </div>
         <header data-am-widget="header" class="am-header am-header-default my-header">
-     
+
             <h1 class="am-header-title">
                 <a href="#title-link" class="">积分商城</a>
             </h1>
@@ -31,18 +35,21 @@
                     <i class="am-header-icon  iconfont icon-share"></i>
                 </a>
             </div>
+
         </header>
         <!-- banner -->
         <div class="carousel-wrap" id="carousel">
-            <transition-group tag="ul" class='slide-ul' name="list">
-            <li v-for="(list,index) in binner" :key="index" v-show="index===currentIndex" >
-                <a :href="list.url" >
-                <img :src="list.image">
-                </a>
-            </li>
+            <!-- 轮播图 -->
+            <transition-group tag="ul" class='slide-ul' :name="transition" v-swipeleft="left" v-swiperight="right">
+                <!-- 自定义事件 -->
+                <li v-for="(list,index) in binner" :key="index" v-show="index===currentIndex">
+                    <a :href="list.url">
+                        <img :src="list.image">
+                    </a>
+                </li>
             </transition-group>
             <div class="carousel-items">
-            <span v-for="(item,index) in binner.length" :class="{'active':index===currentIndex}" ></span>
+                <span v-for="(item,index) in binner.length" :class="{'active':index===currentIndex}"></span>
             </div>
         </div>
         <div class="title">商品列表</div>
@@ -139,24 +146,39 @@
                     </a>
                 </li>
                 <li>
-                        <a href="./dec.html">
-                            <div class="am-panel am-panel-default">
-                                <div class="am-panel-bd">
-                                    <img class="am-img-responsive" src="default/img2.jpg" />
-                                    <h3>
-                                        <a href="#">电蟒原装智能遥控器</a>
-                                    </h3>
-                                    <div>
-                                        <span class="list-product-price-span">￥89.00
-                                            <span>+88积分 </span>
-                                        </span>
-                                        <s class="list-product-commission-span"> ￥189.00</s>
-                                    </div>
+                    <a href="./dec.html">
+                        <div class="am-panel am-panel-default">
+                            <div class="am-panel-bd">
+                                <img class="am-img-responsive" src="default/img2.jpg" />
+                                <h3>
+                                    <a href="#">电蟒原装智能遥控器</a>
+                                </h3>
+                                <div>
+                                    <span class="list-product-price-span">￥89.00
+                                        <span>+88积分 </span>
+                                    </span>
+                                    <s class="list-product-commission-span"> ￥189.00</s>
                                 </div>
                             </div>
-                        </a>
-                    </li>
+                        </div>
+                    </a>
+                </li>
             </ul>
+            <ul data-am-widget="pagination" class="am-pagination am-pagination-select">
+                    <li class="am-pagination-prev ">
+                        <a href="javascript:;" class="">上一页</a>
+                    </li>
+                    <li class="am-pagination-select">
+                        <select>
+                            <option value="#" class="">1 / 3</option>
+                            <option value="#" class="">2 / 3</option>
+                            <option value="#" class="">3 / 3</option>
+                        </select>
+                    </li>
+                    <li class="am-pagination-next ">
+                        <a href="javascript:;" class="">下一页</a>
+                    </li>
+                </ul>
         </div>
 
 
@@ -195,12 +217,12 @@
                     </a>
                 </li>
             </ul>
-         
-           
-            
+
+
+
         </div>
     </div>
-  
+
     <script src="./js/axios.min.js"></script>
     <script src="./js/index.js"></script>
 </body>

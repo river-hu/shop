@@ -21,6 +21,7 @@ var vm = new Vue({
             this.currentIndex++
             if (this.currentIndex > this.binner.length - 1) {
                 this.currentIndex = 0
+
             }
         },
         left:function(){//向左滑动
@@ -36,6 +37,7 @@ var vm = new Vue({
                 this.currentIndex = this.binner.length - 1
             }
             this.go();  
+
         }
     },
     created:function(){
@@ -44,8 +46,11 @@ var vm = new Vue({
             console.log(response);
             vm.binner = response.data.data;
             hide_loading();//加载完成
-        })
-        axios.get("")
+        });
+        axios.get("http://192.168.1.107:8080/oneqrcode/shopGoodsController/query.do?page=0&count=1").then(function(response){
+            
+        }).catch(function(){
+        });
         this.$nextTick(function(){//启动轮播图
             vm.timer = setInterval(function(){
                 vm.autoPlay()

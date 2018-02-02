@@ -43,9 +43,12 @@
       </div>
     </div>
     <section data-am-widget="accordion" class="am-accordion am-accordion-gapped" data-am-accordion='{"multiple": true}'>
-      <dl class="am-accordion-item am-active" v-for="(v,index) in arr" :key="index">
-        <dt class="am-accordion-title">{{v.name}}</dt>
-        <dd class="am-accordion-bd am-collapse am-in">
+        
+      <dl class="am-accordion-item " :class="{'am-active':sortIndex==index}" v-for="(v,index) in arr" :key="index">
+          
+        <dt class="am-accordion-title" @click="toggle(index)">{{v.name}}</dt>
+        <transition name="list">
+        <dd class="am-accordion-bd am-collapse am-in" v-if="sortIndex==index">
           <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
           <div class="am-accordion-content">
             <dl class="my-category-dl">
@@ -108,7 +111,9 @@
             </dl>
           </div>
         </dd>
+      </transition>
       </dl>
+   
     </section>
     <div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
       <a href="#top" title="">

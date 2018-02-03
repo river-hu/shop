@@ -11,46 +11,6 @@ var vm = new Vue({
                 dec:"农业路政七街省汇中心B座710室",
                 tel:"15039922892",
                 off:false
-            },
-            {
-                name:"胡长江",
-                sheng:"河南",
-                city:"郑州",
-                qu:"金水区",
-                jie:"文化路街道",
-                dec:"农业路政七街省汇中心B座710室",
-                tel:"15039922892",
-                off:false
-            },
-            {
-                name:"胡长江",
-                sheng:"河南",
-                city:"郑州",
-                qu:"金水区",
-                jie:"文化路街道",
-                dec:"农业路政七街省汇中心B座710室",
-                tel:"15039922892",
-                off:false
-            },
-            {
-                name:"胡长江",
-                sheng:"河南",
-                city:"郑州",
-                qu:"金水区",
-                jie:"文化路街道",
-                dec:"农业路政七街省汇中心B座710室",
-                tel:"15039922892",
-                off:false
-            },
-            {
-                name:"胡长江",
-                sheng:"河南",
-                city:"郑州",
-                qu:"金水区",
-                jie:"文化路街道",
-                dec:"农业路政七街省汇中心B座710室",
-                tel:"15039922892",
-                off:false
             }
         ],
         address:[],
@@ -58,7 +18,8 @@ var vm = new Vue({
         address_area:[],
         sheng:'',
         city:'',
-        qu:''
+        qu:'',
+        arrIndex:-1
     },
     filters:{
         phone: function (value) {//手机号隐藏
@@ -95,7 +56,7 @@ var vm = new Vue({
               
                 axios.get("http://192.168.1.107:8080/oneqrcode/addressJsonController/index.do").then(function(response){
                         vm.address=response.data;
-                        vm.sheng=vm.arr[index].sheng;
+                        vm.sheng=vm.arr[index].province;
                         for(var i=0;i<35;i++){
                             if(vm.sheng==vm.address[i].name){
                                 vm.address_city=vm.address[i].city;
@@ -111,21 +72,35 @@ var vm = new Vue({
                                 break;
                             }
                         }
-                        vm.qu=vm.arr[index].qu;
-                        vm.arr[index].off= true;
+                        vm.qu=vm.arr[index].district;
+                        vm.arrIndex= index;
                 }).catch(function(error){
                         alert("网络错误请刷新重试");
                 })
             }else{
-                this.sheng=this.arr[index].sheng;
+                this.sheng=this.arr[index].province;
                 this.city=this.arr[index].city;
-                this.qu=this.arr[index].qu;
-                this.arr[index].off= !this.arr[index].off;
+                this.qu=this.arr[index].district;
+                if(this.arrIndex==index){
+                    this.arrIndex=-1
+                }else{
+                    this.arrIndex= index;
+                }
+                
             }
 
         }
     },
     created:function(){
-
+        var id = sessionStorage.userid;
+        axios.get("http://192.168.1.107:8080/oneqrcode/receivingAddressController/query.do",{
+            params:{
+                "wechat_user_id":id
+            }
+        }).then(function(response){
+            console.log(response.data);
+            vm.arr=response.data.data;
+        }).catch(function(error){
+        })
     }
 })

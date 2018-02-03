@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="amazeui/css/amazeui.min.css" />
     <link rel="stylesheet" href="./font/iconfont.css">
     <link rel="stylesheet" href="./css/address.css">
-   
+    <script src="./js/vue.js"></script>
 </head>
 
 <body>
@@ -35,24 +35,24 @@
         <div class="am-panel am-panel-default" v-for="(v,index) in arr">
             <div class="am-panel-bd">
                 <p>
-                    <span>{{v.name}}</span> {{v.tel|phone}}
-                    <span>[默认]</span>
+                    <span>{{v.person}}</span> {{v.mobile|phone}}
+                    <span v-if="v.isdefault">[默认]</span>
                 </p>
                 <p>
-                    {{v.sheng}} {{v.city}} {{v.qu}} {{v.jie}}
+                    {{v.province}} {{v.city}} {{v.district}}
                 </p>
                 <p>
-                    {{v.dec}}
+                    {{v.detailAddress}}
                 </p>
                 <transition name="fade">
-                <form action="" class="am-form am-form-inline" v-if="v.off">
+                <form action="" class="am-form am-form-inline" v-if="arrIndex==index">
                     <div class="am-form-group am-form-icon">
                         <i class="iconfont icon-people"></i>
-                        <input type="text" class="am-form-field" placeholder="收件人" v-model="v.name">
+                        <input type="text" class="am-form-field" placeholder="收件人" v-model="v.person">
                     </div>
                     <div class="am-form-group am-form-icon">
                         <i class="iconfont icon-mobilephone"></i>
-                        <input type="text" class="am-form-field" placeholder="联系电话" v-model="v.tel">
+                        <input type="text" class="am-form-field" placeholder="联系电话" v-model="v.mobile">
                     </div>
                     <div class="am-form-group am-form-icon dizhi">
 
@@ -71,7 +71,7 @@
                     </div>
                     <div class="am-form-group am-form-icon">
                         <i class="icon-coordinates iconfont"></i>
-                        <input type="text" class="am-form-field" placeholder="地址详情" v-model="v.dec">
+                        <input type="text" class="am-form-field" placeholder="地址详情" v-model="v.detailAddress">
                     </div>
                     <div class="am-form-group am-form-icon setbtn">
                         <button type="button" class="am-btn am-btn-default am-radius">设为默认</button> <button type="button" class="am-btn am-btn-default am-radius">保存修改</button><button type="button" class="am-btn am-btn-danger am-radius">删除</button>
@@ -90,7 +90,7 @@
         </footer>
         <!--底部-->
     </div>
-    <script src="./js/vue.js"></script>
+    
     <script src="./js/axios.min.js"></script>
     <script src="./js/address.js"></script>
 </body>

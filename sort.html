@@ -51,13 +51,14 @@
         <dd class="am-accordion-bd am-collapse am-in" v-if="sortIndex==index">
           <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
           <div class="am-accordion-content">
-            <dl class="my-category-dl">
-              <dt style="display:none;">
-                <a href="#" class="red2 am-cf">二级分类</a>
+            <dl class="my-category-dl" v-for="j in v.list">
+              <dt>
+                <a href="#" class="red2 am-cf">{{j.name}}</a>
               </dt>
-              <dd v-for="(v,index) in arrIndex" :key="index">
+              <dd v-for="k in j.shop" @click="goto">
                 <a href="#">
-                  <img src="./default/img2.jpg" alt=""> 会员卡1</a>
+                  <img :src="k.photo" alt=""> {{k.name}}
+                </a>
               </dd>
               
             </dl>

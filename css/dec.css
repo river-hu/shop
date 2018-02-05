@@ -99,3 +99,10 @@ ul{
   .list2-enter {
     transform: translateX(-100%)
   }
+.size-p .active{
+    color: #fff;
+    background: rgb(153, 63, 63);
+    border: none;
+}
+
+

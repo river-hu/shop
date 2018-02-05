@@ -1,11 +1,44 @@
 var vm = new Vue({
     el:".container",
     data:{
-            off:false
+            off:false,
+            arr:[
+                {
+                    person:"胡长江",
+                    province:"河南",
+                    city:"郑州",
+                    district:"金水区",
+                    detailAddress:"农业路政七街省汇中心B座710室",
+                    mobile:"15039922892",
+                    isdefault:1
+                },
+                {
+                    person:"胡长江",
+                    province:"河南",
+                    city:"郑州",
+                    district:"金水区",
+                    detailAddress:"农业路政七街省汇中心B座710室",
+                    mobile:"15039922892",
+                    isdefault:false
+                },
+                {
+                    person:"胡长江",
+                    province:"河南",
+                    city:"郑州",
+                    district:"金水区",
+                    detailAddress:"农业路政七街省汇中心B座710室",
+                    mobile:"15039922892",
+                    isdefault:false
+                }
+            ],
+            arrIndex:0,
     },
     methods:{
         toggle:function(){
             this.off=!this.off;
+        },
+        check:function(index){
+            this.arrIndex=index;
         }
     },
     created:function(){

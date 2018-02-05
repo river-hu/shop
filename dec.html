@@ -26,7 +26,7 @@
         </a>
       </div>
       <h1 class="am-header-title">
-        <a href="#title-link" class="">运动功能饮料</a>
+        <a href="#title-link" class="">{{shop.name}}</a>
       </h1>
       <div class="am-header-right am-header-nav">
         <a href="./index.html" class="">
@@ -51,39 +51,34 @@
   </div>
     <div class="gray-panel">
       <div class="paoduct-title-panel">
-        <h1 class="product-h1">运动功能饮料</h1>
+        <h1 class="product-h1">{{shop.name}}</h1>
         <p>
           <span class="bold">价格：</span>
-          <span class="red2">￥60.00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="product-title-gray-text">积分：300积分</span>
+          <span class="red2">￥{{shop.shop_goods_sorts[sortIndex].price}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="product-title-gray-text">积分：{{shop.shop_goods_sorts[sortIndex].integration}}积分</span>
+          
         </p>
       </div>
 
       <div class="my-search-title-panel">
         <p class="my-search-titp-p am-text-sm bold">选择分类</p>
         <p class="size-p" id="sizep">
-          <span data-size="S">S</span>
-          <span data-size="M">M</span>
-          <span data-size="L">L</span>
-          <span data-size="XL">XL</span>
-          <span data-size="XXL">XXL</span>
-          <input type="hidden" id="size" name="size" value="" />
+          <span v-for="(v,index) in shop.shop_goods_sorts" @click="select(index)" :class="{active:index==sortIndex}">{{v.name}}</span>         
         </p>
-        
-        <hr data-am-widget="divider" style="" class="am-divider-default am-margin-bottom-sm" />
+        <hr  class="am-divider-default am-margin-bottom-sm" />
         <p class="my-search-titp-p am-text-sm bold">数量</p>
         <div style="overflow:hidden">
           <form class="am-form-inline" role="form">
-            <button type="button" class="am-btn am-btn-default" style="float:left" >
+            <button type="button" class="am-btn am-btn-default" style="float:left" @click="jian">
               <i class="am-icon-minus"></i>
             </button>
-            <input type="number" name="txtQty" id="txtQty" class="am-form-field txt-qty am-text-center am-text-sm" value="1" style=" width:60px; margin-right:0px; height:37px; display:inline; float:left">
-            <button type="button" class="am-btn am-btn-default" style="float:left">
+            <input type="number" name="txtQty" id="txtQty" class="am-form-field txt-qty am-text-center am-text-sm" v-model="num" style=" width:60px; margin-right:0px; height:37px; display:inline; float:left">
+            <button type="button" class="am-btn am-btn-default" style="float:left" @click="add">
               <i class="am-icon-plus"></i>
             </button>
           </form>
         </div>
-        <hr data-am-widget="divider" style="" class="am-divider-default am-margin-bottom-sm" />
+        <hr  class="am-divider-default am-margin-bottom-sm" />
         <div>
           <ul class="am-avg-sm-2 am-text-center">
             <li class="am-text-center am-padding-sm">
@@ -101,10 +96,10 @@
     <div data-am-widget="tabs" class="am-tabs am-tabs-d2">
       <ul class="am-tabs-nav am-cf">
         <li class="am-active">
-          <a href="[data-tab-panel-0]">详情</a>
+          <a href="javascript:;">详情</a>
         </li>
         <li class="">
-          <a href="[data-tab-panel-2]">评价</a>
+          <a href="javascript:;">评价</a>
         </li>
       </ul>
       <div class="am-tabs-bd">

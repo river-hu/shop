@@ -34,29 +34,25 @@
         </header>
         <div class="am-panel am-panel-default" v-if="arr.length!=0" v-for="(v,index) in arr">
             <div class="am-panel-bd">
-
                 <p>
                     <span>{{v.person}}</span> {{v.mobile|phone}}
                     <span v-if="v.isdefault">[默认]</span>
                 </p>
-
                 <p>
                     {{v.province}} {{v.city}} {{v.district}}
                 </p>
-
                 <p>
                     {{v.detailAddress}}
                 </p>
-
                 <transition name="fade">
-                <form action="" class="am-form am-form-inline" v-if="arrIndex==index">
+                <form action="" style="background:#fff;" class="am-form am-form-inline" v-if="arrIndex==index">
                     <div class="am-form-group am-form-icon">
                         <i class="iconfont icon-people"></i>
                         <input type="text" class="am-form-field" placeholder="收件人" v-model="v.person">
                     </div>
                     <div class="am-form-group am-form-icon">
                         <i class="iconfont icon-mobilephone"></i>
-                        <input type="text" class="am-form-field" placeholder="联系电话" v-model="v.mobile">
+                        <input type="number" class="am-form-field" placeholder="联系电话" v-model="v.mobile">
                     </div>
                     <div class="am-form-group am-form-icon dizhi">
 
@@ -88,7 +84,7 @@
             </button>
         </div>
         <div class="footer" @click="add_toggle">
-            <span class="iconfont icon-add"></span>
+            <span class="iconfont " :class="{'icon-packup':add_off,'icon-add':!add_off}"></span>
            
         </div>
         <div v-show="add_off">
@@ -100,7 +96,7 @@
                     </div>
                     <div class="am-form-group am-form-icon">
                         <i class="iconfont icon-mobilephone"></i>
-                        <input type="text" class="am-form-field" placeholder="联系电话" >
+                        <input type="number" class="am-form-field" placeholder="联系电话" >
                     </div>
                     <div class="am-form-group am-form-icon dizhi">
 

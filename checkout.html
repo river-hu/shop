@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="./default/style.css" />
     <link rel="stylesheet" href="./font/iconfont.css">
     <link rel="stylesheet" href="./css/checkout.css">
-    <script src="amazeui/js/jquery.min.js"></script>
-    <script src="amazeui/js/amazeui.min.js"></script>
+    <script src="./js/vue.js"></script>
 </head>
 
 <body>
@@ -38,75 +37,40 @@
         <div class="gray-panel">
             <div class="paoduct-title-panel">
                 <h2 class="checkout-h2" @click="toggle"> 选择收货地址 <span class="iconfont icon-other"></span> </h2>
+                <transition name="list">
                 <div v-if="off">
-                    <div class="am-panel am-panel-default">
+                    <div class="am-panel am-panel-default" :class="{active:arrIndex==index}" v-for="(v,index) in arr" @click="check(index)">
                         <div class="am-panel-bd">
                             <p>
-                                <span>胡长江</span> 150*****892
-
+                                <span>{{v.person}}</span> {{v.mobile}}
+                                <span v-if="v.isdefault">[默认]</span>
                             </p>
+            
                             <p>
-                                河南省郑州市金水区文化路街道
+                                {{v.province}} {{v.city}} {{v.district}}
                             </p>
+            
                             <p>
-                                农业路政七街省汇中心B座710室
+                                {{v.detailAddress}}
                             </p>
                         </div>
                     </div>
-                    <div class="am-panel am-panel-default">
-                        <div class="am-panel-bd">
-                            <p>
-                                <span>胡长江</span> 150*****892
-
-                            </p>
-                            <p>
-                                河南省郑州市金水区文化路街道
-                            </p>
-                            <p>
-                                农业路政七街省汇中心B座710室
-                            </p>
-                        </div>
-                    </div>
-                    <div class="am-panel am-panel-default">
-                        <div class="am-panel-bd">
-                            <p>
-                                <span>胡长江</span> 150*****892
-
-                            </p>
-                            <p>
-                                河南省郑州市金水区文化路街道
-                            </p>
-                            <p>
-                                农业路政七街省汇中心B座710室
-                            </p>
-                        </div>
-                    </div>
-                    <div class="am-panel am-panel-default">
-                        <div class="am-panel-bd">
-                            <p>
-                                <span>胡长江</span> 150*****892
-
-                            </p>
-                            <p>
-                                河南省郑州市金水区文化路街道
-                            </p>
-                            <p>
-                                农业路政七街省汇中心B座710室
-                            </p>
-                        </div>
-                    </div>
+                    
                 </div>
-                <div class="am-panel am-panel-default active">
+                 </transition>
+                <div class="am-panel am-panel-default active" v-if="!off">
                     <div class="am-panel-bd">
                         <p>
-                            <span>胡长江</span> 150*****892
-                            <span>[默认]</span>
+                            <span>{{arr[arrIndex].person}}</span> {{arr[arrIndex].mobile}}
+                            <span v-if="arr[arrIndex].isdefault">[默认]</span>
                         </p>
+        
                         <p>
-                            河南省郑州市金水区文化路街道
+                            {{arr[arrIndex].province}} {{arr[arrIndex].city}} {{arr[arrIndex].district}}
                         </p>
+        
                         <p>
-                            农业路政七街省汇中心B座710室
+                            {{arr[arrIndex].detailAddress}}
                         </p>
                     </div>
                 </div>
@@ -180,8 +144,8 @@
             </div>
         </div>
 
-        <footer data-am-widget="footer" class="am-footer am-footer-default" data-am-footer="{  }">
-            <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+        <footer class="am-footer am-footer-default">
+            <hr  class="am-divider am-divider-default" />
             <div class="am-footer-miscs ">
                 <p>CopyRight©2014 AllMobilize Inc.</p>
                 <p>京ICP备13033158</p>
@@ -189,8 +153,7 @@
         </footer>
         <!--底部-->
     </div>
-
-        <script src="./js/vue.js"></script>
+        <script src="./js/axios.min.js"></script>
         <script src="./js/checkout.js"></script>
 </body>
 

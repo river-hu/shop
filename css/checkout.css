@@ -10,7 +10,7 @@
     margin: 10px;
     border-radius:5px ;
     position: relative;
-    transition: all 5s;
+    
 }
 .am-panel-bd {
     padding: 0.25rem;
@@ -46,3 +46,19 @@
     float: left;
     padding-top: 15px;
 }
+.list-enter-to {
+    transition: all .5s ease;
+    transform: translateY(0);
+  }
+  
+  .list-leave-active {
+    transition: all .5s ease;
+  }
+  
+  .list-enter {
+    transform: translateY(-100%)
+  }
+  
+  .list-leave {
+    transform: translateY(0)
+  }

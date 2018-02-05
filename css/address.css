@@ -81,13 +81,22 @@ input,button{
     flex-shrink:1;
     font-size: 14px;
 }
-.fade-enter-active, .fade-leave-active {
-  transition: all .5s linear;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  transform-origin: 0% 0% ;
-  transform: scale(1,0) ;
-}
+.fade-enter-to {
+    transition: all .5s ease;
+    transform: translateY(0);
+  }
+  
+  .fade-leave-active {
+    transition: all .5s ease;
+  }
+  
+  .fade-enter {
+    transform: translateY(-100%)
+  }
+  
+  .fade-leave {
+    transform: translateY(0)
+  }
 .am-header .am-header-title{
     font-size: 16px;
 }

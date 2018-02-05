@@ -103,6 +103,33 @@ input,button{
 .am-form select:focus{
     border-color: #ccc;
 }
+.footer{
+    text-align: center;
+    height: 30px;
+    margin: 10px;
+    line-height: 30px;
+    border: 1px solid rgb(214, 214, 214);
+    box-shadow: 1px 1px 7px 0 #c7c7c7;
+    border-radius:5px ;
+}
+.list-enter-to {
+    transition: all .5s ease;
+    transform: translateY(0);
+  }
+  
+  .list-leave-active {
+    transition: all .5s ease;
+    /* transform: translateY(-100%) */
+  }
+  
+  .list-enter {
+    transform: translateY(100%)
+  }
+  
+  .list-leave {
+    transform: translateY(0)
+  }
+
 
 
 

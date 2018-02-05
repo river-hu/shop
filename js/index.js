@@ -18,6 +18,7 @@ var vm = new Vue({
             }).then(function(response){
                 console.log(response.data);
                 vm.page=response.data.data;
+                localStorage.setItem("shop",JSON.stringify(vm.page.list[0]));
             }).catch(function(){
             });
         }
@@ -27,14 +28,14 @@ var vm = new Vue({
             if(this.pageIndex>1){
                 this.pageIndex--;
             }
-        }, 
-        
+        },         
         downto:function(){
             console.log(this.page.total);
             
             if(this.pageIndex<this.page.total){
                 this.pageIndex++;
             }
+
         },
         go:function() {//定时轮播
             this.timer = setInterval(() => {

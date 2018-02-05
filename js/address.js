@@ -19,7 +19,8 @@ var vm = new Vue({
         sheng:'',
         city:'',
         qu:'',
-        arrIndex:-1
+        arrIndex:-1,
+        add_off:false
     },
     filters:{
         phone: function (value) {//手机号隐藏
@@ -54,29 +55,7 @@ var vm = new Vue({
             console.log(this.sheng);
             if(vm.address.length==0){
               
-                axios.get("http://192.168.1.107:8080/oneqrcode/addressJsonController/index.do").then(function(response){
-                        vm.address=response.data;
-                        vm.sheng=vm.arr[index].province;
-                        for(var i=0;i<35;i++){
-                            if(vm.sheng==vm.address[i].name){
-                                vm.address_city=vm.address[i].city;
-                               
-                                break;
-                            }
-                        }
-                        vm.city=vm.arr[index].city;
-                        for(var i=0;i<vm.address_city.length;i++){
-                            if(vm.city==vm.address_city[i].name){
-                                vm.address_area=vm.address_city[i].area;
-                               
-                                break;
-                            }
-                        }
-                        vm.qu=vm.arr[index].district;
-                        vm.arrIndex= index;
-                }).catch(function(error){
-                        alert("网络错误请刷新重试");
-                })
+                
             }else{
                 this.sheng=this.arr[index].province;
                 this.city=this.arr[index].city;
@@ -88,7 +67,10 @@ var vm = new Vue({
                 }
                 
             }
-
+        },
+        add_toggle:function(){
+            this.add_off=!this.add_off;
+            this.sheng="北京";
         }
     },
     created:function(){
@@ -102,5 +84,11 @@ var vm = new Vue({
             vm.arr=response.data.data;
         }).catch(function(error){
         })
+        axios.get("http://192.168.1.107:8080/oneqrcode/addressJsonController/index.do").then(function(response){
+                        vm.address=response.data;
+                
+                }).catch(function(error){
+                        alert("网络错误请刷新重试");
+                })
     }
 })

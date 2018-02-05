@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="./default/style.css" />
   <link rel="stylesheet" href="./font/iconfont.css">
   <link rel="stylesheet" href="./css/dec.css">
-  <script src="./amazeui/js/jquery.min.js"></script>
-  <script src="./amazeui/js/amazeui.min.js"></script>
+  <script src="./js/vue.js"></script>
+  <script src="./js/my.js"></script>
 </head>
 
 <body>
@@ -35,22 +35,20 @@
       </div>
     </header>
     <!-- banner -->
-    <div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{&quot;directionNav&quot;:false}'>
-      <ul class="am-slides">
-        <li>
-          <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg">
-        </li>
-        <li>
-          <img src="http://s.amazeui.org/media/i/demos/bing-2.jpg">
-        </li>
-        <li>
-          <img src="http://s.amazeui.org/media/i/demos/bing-3.jpg">
-        </li>
-        <li>
-          <img src="http://s.amazeui.org/media/i/demos/bing-4.jpg">
-        </li>
-      </ul>
-    </div>
+    <div class="carousel-wrap" id="carousel">
+      <!-- 轮播图 -->
+      <transition-group tag="ul" class='slide-ul' :name="transition" v-swipeleft="left" v-swiperight="right">
+          <!-- 自定义事件 -->
+          <li v-for="(list,index) in shop.images" :key="index" v-show="index===currentIndex">
+              <a href="#">
+                  <img :src="list">
+              </a>
+          </li>
+      </transition-group>
+      <div class="carousel-items">
+          <span v-for="(item,index) in shop.images.length" :class="{'active':index===currentIndex}"></span>
+      </div>
+  </div>
     <div class="gray-panel">
       <div class="paoduct-title-panel">
         <h1 class="product-h1">运动功能饮料</h1>
@@ -76,11 +74,11 @@
         <p class="my-search-titp-p am-text-sm bold">数量</p>
         <div style="overflow:hidden">
           <form class="am-form-inline" role="form">
-            <button type="button" class="am-btn am-btn-default" style="float:left" onClick="subtractQty();">
+            <button type="button" class="am-btn am-btn-default" style="float:left" >
               <i class="am-icon-minus"></i>
             </button>
             <input type="number" name="txtQty" id="txtQty" class="am-form-field txt-qty am-text-center am-text-sm" value="1" style=" width:60px; margin-right:0px; height:37px; display:inline; float:left">
-            <button type="button" class="am-btn am-btn-default" style="float:left" onClick="addQty();">
+            <button type="button" class="am-btn am-btn-default" style="float:left">
               <i class="am-icon-plus"></i>
             </button>
           </form>
@@ -196,15 +194,10 @@
       </div>
     </div>
 
-
-    <script>
-      function showFooterNav() {
-        $("#footNav").toggle();
-      }
-    </script>
-    <script src="./js/dec.js"></script>
+    
   </div>
   </div>
+  <script src="./js/dec.js"></script>
 </body>
 
 </html>

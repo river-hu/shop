@@ -27,14 +27,13 @@ var vm = new Vue({
             vm.arr = response.data.data;
             axios.get("http://192.168.1.107:8080/oneqrcode/secondSortController/query.do",{//根据一级分类获取二级分类
                 params:{
-                    firstid:vm.arr[1].id
+                    firstid:vm.arr[0].id
                 }
             }).then(function(response){//根据二级分类获取商品数据
                 hide_loading();
                 console.log(response.data.data)
-                var arr = response.data.data
-                for(var i=0;i<)
-                vm.arrIndex=response.data.data; 
+                vm.arrIndex = response.data.data;
+            
             })
             
         }).catch(function(error){

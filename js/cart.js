@@ -53,7 +53,8 @@ var vm = new Vue({
         ],
         all: false,
         marey: 0,
-        all_marey:0
+        all_marey:0,
+        loading:false
     },
     methods: {
         check: function (index) {
@@ -67,42 +68,55 @@ var vm = new Vue({
             }
             this.addall();
         },
-        close: function (index) {
-            this.arr.splice(index, 1);
-            for (var i in this.arr) {
-                this.all = true;
-                if (!this.arr[i].off) {
-                    this.all = false;
-                    break;
+        close: function (index) {//删除购物车单条数据
+            axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopCarController/deleteById.do",{
+                params:{
+                    id:vm.arr[index].id
                 }
-            }
-            this.addall();
+            }).then(function(response){
+                console.log(response.data);
+                vm.arr.splice(index, 1);
+                for (var i in vm.arr) {//重新计算总价钱
+                    vm.all = true;
+                    if (!vm.arr[i].off) {
+                        vm.all = false;
+                        break;
+                    }
+                }
+                vm.addall();
+            }).catch(function(error){
+            })
+           
         },
-        jian: function (index) {
-            if (this.arr[index].num != 1) {
-                this.arr[index].num--;
+        buy:function(){//go to buy goods now
+            
+
+        },
+        jian: function (index) {//数量减1
+            if (this.arr[index].count != 1) {
+                this.arr[index].count--;
 
                 this.addall();
             }
 
         },
-        add: function (index) {
-            this.arr[index].num++;
+        add: function (index) {//数量增加，并选中商品
+            this.arr[index].count++;
             this.arr[index].off = false;
             this.check(index);
             this.addall();
 
         },
-        addall: function () {
+        addall: function () {//计算全部选中商品的价格总和
             var mroe = 0;
             for (var i in this.arr) {
                 if (this.arr[i].off) {
-                    mroe += this.arr[i].price * this.arr[i].num;
+                    mroe += this.arr[i].shopGoodsSort.price * this.arr[i].count;
                 }
             }
             this.all_marey = mroe;
         },
-        check_all: function () {
+        check_all: function () {//全选功能
             this.all = !this.all;
             for (var i in this.arr) {
                 this.arr[i].off = this.all;
@@ -111,6 +125,22 @@ var vm = new Vue({
         }
     },
     created: function () {
-        this.addall();
+        // this.addall();
+        axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopCarController/query.do",{//请求购物车数据
+            params:{
+             "wechat_user_id":33,
+             "page":1,
+             "count":100
+            }
+        }).then(function(response){
+            console.log(response.data);
+            if(response.data.data==''){//请求数据进行非空验证
+                vm.arr=[];
+            }else{
+                vm.arr=response.data.data.list;
+            }
+            vm.loading=true;
+        }).catch(function(error){
+        })
     }
 })

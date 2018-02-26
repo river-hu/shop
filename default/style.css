@@ -214,3 +214,30 @@ position: relative;
 [ v-cloak]{
 	display: none;
 }
+#model{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 2000;
+}
+#model>div{
+	width: 150px;
+	height: 100px;
+	background:rgba(0, 0, 0, .75);
+	border-radius: 8px;
+	position: absolute;
+	left: 50%;
+	margin-left: -75px;
+	top: 50%;
+	margin-top: -50px;
+	color: #fff;
+	text-align: center;
+}
+#model .iconfont{
+	content: '';
+	font-size: 40px;
+	line-height: 35px;
+	margin-top: 15px;
+
+	margin-bottom: 10px;
+}

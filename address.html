@@ -12,10 +12,14 @@
     <link rel="stylesheet" href="amazeui/css/amazeui.min.css" />
     <link rel="stylesheet" href="./font/iconfont.css">
     <link rel="stylesheet" href="./css/address.css">
-    <script src="./js/vue.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="./js/my.js"></script>  
 </head>
 
 <body>
+        <div id="loading">
+            <img src="./font/loading.gif" alt="加载中...">
+        </div>
     <div class="container">
         <header data-am-widget="header" class="am-header am-header-default my-header">
             <div class="am-header-left am-header-nav">
@@ -74,7 +78,7 @@
                     </div>
 
                     <div class="am-form-group am-form-icon setbtn">
-                        <button type="button" class="am-btn am-btn-default am-radius">设为默认</button> <button type="button" class="am-btn am-btn-default am-radius">保存修改</button><button type="button" class="am-btn am-btn-danger am-radius">删除</button>
+                        <button @click="defaul(index)" type="button" class="am-btn am-btn-default am-radius">设为默认</button> <button type="button" class="am-btn am-btn-default am-radius" @click="updata(index)">保存修改</button><button type="button" class="am-btn am-btn-danger am-radius" @click="delet(index)">删除</button>
                     </div>                   
                 </form>
             </transition>
@@ -82,6 +86,9 @@
             <button class="set iconfont icon-decoration_fill" @click="set(index)">
                 
             </button>
+        </div>
+        <div v-else class="none">
+            没有收货地址
         </div>
         <div class="footer" @click="add_toggle">
             <span class="iconfont " :class="{'icon-packup':add_off,'icon-add':!add_off}"></span>
@@ -92,11 +99,11 @@
                 <form action="" class="am-form am-form-inline" >
                     <div class="am-form-group am-form-icon">
                         <i class="iconfont icon-people"></i>
-                        <input type="text" class="am-form-field" placeholder="收件人">
+                        <input type="text" class="am-form-field" placeholder="收件人" v-model="user">
                     </div>
                     <div class="am-form-group am-form-icon">
                         <i class="iconfont icon-mobilephone"></i>
-                        <input type="number" class="am-form-field" placeholder="联系电话" >
+                        <input type="number" class="am-form-field" placeholder="联系电话" v-model="tel">
                     </div>
                     <div class="am-form-group am-form-icon dizhi">
 
@@ -113,11 +120,11 @@
                     </div>
                     <div class="am-form-group am-form-icon">
                         <i class="icon-coordinates iconfont"></i>
-                        <input type="text" class="am-form-field" placeholder="地址详情">
+                        <input type="text" class="am-form-field" placeholder="地址详情" v-model="dec">
                     </div>
 
                     <div class="am-form-group am-form-icon setbtn">
-                        <button type="button" class="am-btn am-btn-default am-radius">设为默认</button> <button type="button" class="am-btn am-btn-default am-radius">确认添加</button>
+                        <button type="button" @click="cancel" class="am-btn am-btn-default am-radius">取消添加</button> <button type="button" class="am-btn am-btn-default am-radius" @click="add">确认添加</button>
                     </div>                   
                 </form>
         </div>

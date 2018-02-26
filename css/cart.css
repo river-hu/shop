@@ -127,3 +127,34 @@
     border: 1px solid rgb(219, 39, 39);
     color: #fff;
 }
+.cart-panel {
+    padding: 10px 10px;
+    background: #f7f8f8;
+    padding-bottom: 55px;
+}
+.container {
+    position: fixed;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    height: 100%;
+}
+.app{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #f7f8f8;
+}
+.car_null{
+    text-align: center;
+    color: #999;
+}
+.car_null span{
+    font-size: 35px;
+    display: block;
+    color: #666;
+}
+.car_null a{
+    border: 1px solid #ccc;
+    padding: 5px;
+}

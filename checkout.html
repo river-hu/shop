@@ -13,14 +13,16 @@
     <link rel="stylesheet" href="./default/style.css" />
     <link rel="stylesheet" href="./font/iconfont.css">
     <link rel="stylesheet" href="./css/checkout.css">
+    <script src="./js/jquery-3.1.0.js"></script>
     <script src="./js/vue.js"></script>
+    <script src="../js/main.js"></script>
 </head>
 
 <body>
     <div class="container">
         <header data-am-widget="header" class="am-header am-header-default my-header">
             <div class="am-header-left am-header-nav">
-                <a href="javascript: history.go(-1);" class="">
+                <a href="javascript: history.go(-2);" class="">
                     <i class="iconfont icon-return"></i>
                 </a>
             </div>
@@ -81,52 +83,35 @@
                 <h2 class="checkout-h2"> 确认订单信息</h2>
                 <div class="cart-list-panel">
                     <ul class="am-avg-sm-1 cart-panel-ul">
-                        <li>
+                        <li v-for="v in shop">
                             <div class="imgpanel">
                                 <a href="#">
-                                    <img src="default/img3.jpg" class="am-img-responsive" />
+                                    <img :src="v.shop.photo" class="am-img-responsive" />
                                 </a>
                             </div>
                             <div class="infopanel">
                                 <h3>
-                                    <a href="#">450ml柔顺丰盈护发素正品</a>
+                                    <a href="#">{{v.shop.name}}</a>
                                 </h3>
                                 
                                 <p>价格：
-                                    <span class="red2 bold">78.00</span> 元 
+                                    <span class="red2 bold">{{v.shop.shop_goods_sorts[v.select].price}}</span> 元 
                                 </p>
                                 <p>积分：
-                                    <span class="red2 bold">78.00</span>
-
+                                    <span class="red2 bold">{{v.shop.shop_goods_sorts[v.select].integration}}</span>
+                                    规格：<span class="red2 bold">{{v.shop.shop_goods_sorts[v.select].name}}</span>
                                 </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgpanel">
-                                <a href="#">
-                                    <img src="default/img3.jpg" class="am-img-responsive" />
-                                </a>
-                            </div>
-                            <div class="infopanel">
-                                <h3>
-                                    <a href="#">450ml柔顺丰盈护发素正品</a>
-                                </h3>
-                                
-                                <p>价格：
-                                    <span class="red2 bold">78.00</span> 元 
-                                </p>
-                                <p>积分：
-                                    <span class="red2 bold">78.00</span>
-
+                                <p>数量：
+                                    <span class="red2 bold">{{v.num}}</span>     
                                 </p>
                             </div>
                         </li>
                     </ul>
                 </div>
                 <div class="cart_foot">共
-                    <span class="red2 bold" id="total_good">2</span>件商品；总价：
-                    <span class="red2 bold" id="total_amount">1235</span>元；总积分：
-                    <span class="red2 bold" id="total_jifen">125</span>
+                    <span class="red2 bold" id="total_good">{{allnum}}</span>件商品；总价：
+                    <span class="red2 bold" id="total_amount">{{allprice}}</span>元；总积分：
+                    <span class="red2 bold" id="total_jifen">{{allintegration}}</span>
                 </div>
 
             </div>
@@ -136,7 +121,7 @@
                 <div>
                     <ul class="am-avg-sm-2 am-text-center">
                         <li class="am-text-center am-padding-sm">
-                            <button type="button" class="am-btn am-btn-danger am-btn-block am-radius">立即付款</button>
+                            <button type="button" class="am-btn am-btn-danger am-btn-block am-radius" @click="buy">立即付款</button>
                         </li>
                        
                     </ul>

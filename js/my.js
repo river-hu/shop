@@ -6,6 +6,16 @@ function hide_loading(){//loading蒙层隐藏
     var model = document.getElementById("loading");
     model.style.display="none";
 }
+function showModel(attr,time){//attr为显示层的参数{}
+    var model=document.createElement("div");
+    model.id="model";
+    model.innerHTML="<div><div class=\"iconfont "+attr.icon+"\"></div><span>"+attr.text+"</span></div>";
+    document.body.insertBefore(model,document.body.childNodes[0]);
+    setTimeout(function(){
+        var model=document.getElementById("model");
+        document.body.removeChild(model);
+    },time);
+}
 function vueTouch(el,binding,type){//触屏函数
     var _this=this;
     this.obj=el;

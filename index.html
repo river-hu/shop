@@ -20,11 +20,13 @@
 </head>
 
 <body>
+       
+        <div id="loading">
+                <img src="./font/loading.gif" alt="加载中...">
+            </div>
     <div class="container">
         <!-- 加载动画 -->
-        <div id="loading">
-            <img src="./font/loading.gif" alt="加载中...">
-        </div>
+       
         <header data-am-widget="header" class="am-header am-header-default my-header">
 
             <h1 class="am-header-title">
@@ -53,7 +55,7 @@
                     <a href="./dec.html">
                         <div class="am-panel am-panel-default">
                             <div class="am-panel-bd">
-                                <img class="am-img-responsive" :src="v.photo" />
+                                <img class="am-img-responsive" :src="v.photo" alt="暂无图片"/>
                                 <h3>
                                     <a href="#">{{v.name}}</a>
                                 </h3>
@@ -62,7 +64,7 @@
                                         <span>+{{v.shop_goods_sorts[0].integration}}积分 </span>
                                     </span>
                                     <s class="list-product-commission-span"> ￥{{v.shop_goods_sorts[0].originalPrice}}</s>
-                                </div>
+                             </div>
                                 <div v-else>
                                     <span class="list-product-price-span">
                                         暂无商品价格
@@ -119,7 +121,7 @@
                     </a>
                 </li>
                 <li style="position:relative">
-                    <a href="./user.html" class="">
+                    <a href="../user/index.html" class="">
                         <span class="icon-people iconfont"></span>
                         <span class="am-navbar-label">我的</span>
                     </a>

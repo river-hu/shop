@@ -18,19 +18,20 @@ var vm = new Vue({
             }else{
                 this.sortIndex=index;
             }         
-        },
-        goto:function(){
-            localStorage.setItem("")
+        },  
+        goto:function(k){
+            console.log(k);
+            window.location.href="./dec.html?id="+k.id;
         }
 
     },
     created:function(){
         show_loading();
-        axios.get("http://192.168.1.107:8080/oneqrcode/firstSortController/query.do").then(function(response){//获取一级分类
+        axios.get("http://yunzhujia.qx1688.net/oneqrcode/firstSortController/query.do").then(function(response){//获取一级分类
             console.log(response.data.data);
             vm.arr = response.data.data;
             for( var j in response.data.data){
-            axios.get("http://192.168.1.107:8080/oneqrcode/secondSortController/query.do",{//根据一级分类获取二级分类
+            axios.get("http://yunzhujia.qx1688.net/oneqrcode/secondSortController/query.do",{//根据一级分类获取二级分类
                 params:{
                     firstid:vm.arr[j].id//默认获取第一页商品数据
                 }
@@ -39,7 +40,7 @@ var vm = new Vue({
                 console.log(response.data.data);
                 vm.arr[j].list = response.data.data;
                 for(var i in response.data.data){
-                        axios.get("http://192.168.1.107:8080/oneqrcode/shopGoodsController/query.do",{
+                        axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopGoodsController/query.do",{
                             params:{
                                 secondId:response.data.data[i].id
                             }

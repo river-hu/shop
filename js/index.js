@@ -10,7 +10,7 @@ var vm = new Vue({
     },
     watch:{
         pageIndex:function(){
-            axios.get("http://192.168.1.107:8080/oneqrcode/shopGoodsController/query.do",{
+            axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopGoodsController/query.do",{
                 params:{
                     "page":vm.pageIndex,
                     "count":2
@@ -71,13 +71,14 @@ var vm = new Vue({
         }
     },
     created:function(){
+        
         show_loading();//显示加载动画
-        axios.get("http://192.168.1.107:8080/oneqrcode/shopBannerController/query.do").then(function(response){//请求轮播图数据
+        axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopBannerController/query.do").then(function(response){//请求轮播图数据
             console.log(response);
             vm.binner = response.data.data;
             hide_loading();//加载完成
         });
-        axios.get("http://192.168.1.107:8080/oneqrcode/shopGoodsController/query.do",{
+        axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopGoodsController/query.do",{
             params:{
                 "page":1,
                 "count":2

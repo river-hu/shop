@@ -15,13 +15,15 @@
   <link rel="stylesheet" href="./css/sort.css">
   <script src="./js/vue.js"></script>
   <script src="./js/my.js"></script>
+  <script src="../js/main.js"></script>
 </head>
 
 <body>
+    <div id="loading">
+        <img src="./font/loading.gif" alt="加载中...">
+    </div>
   <div class="container">
-      <div id="loading">
-          <img src="./font/loading.gif" alt="加载中...">
-      </div>
+     
     <header data-am-widget="header" class="am-header am-header-default my-header">
 
       <h1 class="am-header-title">
@@ -55,7 +57,7 @@
               <dt>
                 <a href="#" class="red2 am-cf">{{j.name}}</a>
               </dt>
-              <dd v-for="k in j.shop" @click="goto">
+              <dd v-for="k in j.shop" @click="goto(k)">
                 <a href="#">
                   <img :src="k.photo" alt=""> {{k.name}}
                 </a>
@@ -103,7 +105,7 @@
           </a>
         </li>
         <li style="position:relative">
-          <a href="./user.html" class="">
+          <a href="../user/index.html" class="">
             <span class="icon-people iconfont"></span>
             <span class="am-navbar-label">我的</span>
           </a>

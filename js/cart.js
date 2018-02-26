@@ -53,8 +53,9 @@ var vm = new Vue({
         ],
         all: false,
         marey: 0,
-        all_marey:0,
-        loading:false
+        all_marey: 0,
+        loading: false,
+        integral:0
     },
     methods: {
         check: function (index) {
@@ -69,11 +70,11 @@ var vm = new Vue({
             this.addall();
         },
         close: function (index) {//删除购物车单条数据
-            axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopCarController/deleteById.do",{
-                params:{
-                    id:vm.arr[index].id
+            axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopCarController/deleteById.do", {
+                params: {
+                    id: vm.arr[index].id
                 }
-            }).then(function(response){
+            }).then(function (response) {
                 console.log(response.data);
                 vm.arr.splice(index, 1);
                 for (var i in vm.arr) {//重新计算总价钱
@@ -84,12 +85,12 @@ var vm = new Vue({
                     }
                 }
                 vm.addall();
-            }).catch(function(error){
+            }).catch(function (error) {
             })
-           
+
         },
-        buy:function(){//go to buy goods now
-            
+        buy: function () {//go to buy goods now
+
 
         },
         jian: function (index) {//数量减1
@@ -125,22 +126,38 @@ var vm = new Vue({
         }
     },
     created: function () {
-        // this.addall();
-        axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopCarController/query.do",{//请求购物车数据
-            params:{
-             "wechat_user_id":33,
-             "page":1,
-             "count":100
+        show_loading();
+        var openid = localStorage.getItem("openid");
+        axios.get("http://yunzhujia.qx1688.net/oneqrcode/wechatuserController/getOneById.do", {//获取用户积分信息
+            params: {
+                openid: openid
             }
-        }).then(function(response){
-            console.log(response.data);
-            if(response.data.data==''){//请求数据进行非空验证
-                vm.arr=[];
-            }else{
-                vm.arr=response.data.data.list;
-            }
-            vm.loading=true;
-        }).catch(function(error){
+        }).then(function (response) {
+            console.log(response);
+            var id = response.data.data.id;
+            vm.integral = response.data.data.integral;
+            axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopCarController/query.do", {//请求购物车数据
+                params: {
+                    "wechat_user_id": id,
+                    "page": 1,
+                    "count": 100
+                }
+            }).then(function (response) {
+                console.log(response.data);
+                if (response.data.data == '') {//请求数据进行非空验证
+                    vm.arr = [];
+                } else {
+                    vm.arr = response.data.data.list;
+                }
+                vm.loading = true;
+                hide_loading();
+            }).catch(function (error) {
+            })
+
+        }).catch(function (error) {
+            alert("网络错误，请刷新重试");
         })
+
+
     }
 })

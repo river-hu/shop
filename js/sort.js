@@ -20,8 +20,7 @@ var vm = new Vue({
             }         
         },  
         goto:function(k){
-            console.log(k);
-            window.location.href="./dec.html?id="+k.id;
+            window.location.href="./dec.html?id="+k.id;//页面跳转，附带商品id
         }
 
     },

@@ -12,10 +12,16 @@
 <link rel="stylesheet" href="./font/iconfont.css">
 <link rel="stylesheet" href="./default/style.css"/>
 <link rel="stylesheet" href="./css/cart.css">
-
+<script src="./js/axios.min.js"></script>
+<script src="./js/vue.js"></script>
+<script src="../js/main.js"></script>
+<script src="./js/my.js"></script>
 </head>
 
 <body>
+        <div id="loading">
+                <img src="./font/loading.gif" alt="加载中...">
+            </div>
 <div class="container">
 	<header data-am-widget="header" class="am-header am-header-default my-header">
 
@@ -92,13 +98,7 @@
           </a>
       </li>
       </ul>
-      <script>
-	  	function showFooterNav(){
-			$("#footNav").toggle();
-		}
-      </script>
-      <script src="./js/axios.min.js"></script>
-      <script src="./js/vue.js"></script>
+     
       <script src="./js/cart.js"></script>
     </div>
 </div>

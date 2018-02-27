@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>核销人员认证</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <script src="../js/flex.js"></script>
+</head>
+<body>
+    <div class="header">
+        请输入认证信息
+    </div>
+    <div class="content">
+        <div class="phone">
+            <input type="text" class="phone_u" placeholder="请输入手机号" v-model="phone">
+        </div>
+        <div class="code">
+            <input type="text" class="phone_u" placeholder="请输入短信验证码" v-model="code">
+            <div class="btn" :class="{ded:code_off}" @click="getcode">{{code_content}}</div>
+        </div>
+        <div class="ok">
+            <input type="button" class="phone_u btn_ok" value="确认" @click="post">
+        </div>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="./js/index.js"></script>
+
+</body>
+
+</html>

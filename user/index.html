@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>会员中心</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="./css/amazeui.min.css" />
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/user.css">
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/jquery-3.1.0.js"></script>
+    <script src="../js/main.js"></script>
+</head>
+<body>
+    <div class="container">
+            <div id="loading" >
+                    <img src="./font/loading.gif" alt="加载中...">
+                </div>
+        <header data-am-widget="header" class="am-header am-header-default my-header">
+            <h1 class="am-header-title">
+                <a href="#title-link" class="">会员中心</a>
+            </h1>
+        </header>
+        <div class="uchome-info">
+            <div class="uchome-info-uimg">
+                <img :src="user.headimgurl" alt="yourheaderimg" />
+            </div>
+            <div class="uchome-info-uinfo">
+                <p>{{user.nickname}}，欢迎光临！</p>
+                <p>积分：
+                    <span class="red">{{core}}</span>
+                </p>
+            </div>
+        </div>
+        <!--头部导航-->
+        <div class="am-cf uchome-apps" style="background:#fff;">
+            <div class="prize"  >
+                <a href="../shop/cart.html">
+                    <span class="iconfont icon-publishgoods_fill icon_p jilu"></span>
+                    <span class="my_p"> 购物车</span>
+                    <a href="./cart.html" class="p_to">
+                        <span class="iconfont icon-enter"></span>
+                    </a>
+                </a>
+
+            </div>
+            <div class="prize"  >
+                    <a :href="'../shop/mybuy.html?id='+userid">
+                <span class="iconfont icon-commodity icon_p jilu"></span>
+                <span class="my_p"> 我的订单</span>
+                <a href="./mybuy.html" class="p_to">
+                    <span class="iconfont icon-enter"></span>
+                </a>
+            </a>
+
+            </div>
+
+            <div class="prize">
+                <a :href="'./prize.html?id='+openid">
+                    <span class="iconfont icon-coupons icon_p"></span>
+                    <span class="my_p"> 我的奖品</span>
+                    <a :href="'./prize.html?id='+id" class="p_to">
+                        <span class="iconfont icon-enter "></span>
+                    </a>
+                </a>
+            </div>
+            <div class="prize">
+                    <a href="./record.html" >
+
+                <span class="iconfont icon-createtask icon_p jilu"></span>
+                <span class="my_p"> 中奖记录</span>
+                <a href="./record.html" class="p_to">
+                    <span class="iconfont icon-enter"></span>
+                </a>
+            </a>
+
+            </div>
+            <div class="prize" >
+                    <a href="./integral.html" >
+
+                <span class="iconfont icon-activity icon_p jilu"></span>
+                <span class="my_p"> 积分记录</span>
+                <a href="./integral.html" class="p_to">
+                    <span class="iconfont icon-enter"></span>
+                </a>
+            </a>
+            </div>
+            <div class="prize">
+                    <a href="./address.html">
+
+                <span class="iconfont icon-coordinates icon_p jilu"></span>
+                <span class="my_p"> 收货地址</span>
+                <a href="./address.html" class="p_to">
+                    <span class="iconfont icon-enter"></span>
+                </a>
+            </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!--底部-->
+        <div data-am-widget="navbar" class="am-navbar am-cf my-nav-footer "id="">
+            <ul class="am-navbar-nav am-cf am-avg-sm-4 my-footer-ul">
+                <li>
+                    <a href="../shop/index.html" class="">
+                        <span class="icon-homepage_fill iconfont"></span>
+                        <span class="am-navbar-label">首页</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../shop/sort.html" class="">
+                        <span class="icon-createtask iconfont"></span>
+                        <span class="am-navbar-label">分类</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../shop/cart.html" class="">
+                        <span class="icon-publishgoods_fill iconfont"></span>
+                        <span class="am-navbar-label">购物车</span>
+                    </a>
+                </li>
+                <li style="position:relative">
+                    <a href="#" class="active">
+                        <span class="icon-people iconfont"></span>
+                        <span class="am-navbar-label">我的</span>
+                    </a>
+                </li>
+            </ul>
+           
+        </div>
+    </div>
+    <script src="js/my.js"></script>
+    <script src="js/user.js"></script>
+</body>
+
+</html>

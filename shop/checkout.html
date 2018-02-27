@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>提交订单</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="amazeui/css/amazeui.min.css" />
+    <link rel="stylesheet" href="./default/style.css" />
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <link rel="stylesheet" href="./css/checkout.css">
+    <script src="./js/jquery-3.1.0.js"></script>
+    <script src="./js/vue.js"></script>
+    <script src="../js/main.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header data-am-widget="header" class="am-header am-header-default my-header">
+            <div class="am-header-left am-header-nav">
+                <a href="javascript: history.go(-2);" class="">
+                    <i class="iconfont icon-return"></i>
+                </a>
+            </div>
+            <h1 class="am-header-title">
+                <a href="#title-link" class="">提交订单</a>
+            </h1>
+            <div class="am-header-right am-header-nav">
+                <a href="./index.html" class="">
+                    <i class="iconfont  icon-homepage_fill"></i>
+                </a>
+            </div>
+        </header>
+
+        <div class="gray-panel">
+            <div class="paoduct-title-panel">
+                <h2 class="checkout-h2" @click="toggle"> 选择收货地址 <span class="iconfont icon-other"></span> </h2>
+                <transition name="list">
+                <div v-if="off">
+                    <div class="am-panel am-panel-default" :class="{active:arrIndex==index}" v-for="(v,index) in arr" @click="check(index)">
+                        <div class="am-panel-bd">
+                            <p>
+                                <span>{{v.person}}</span> {{v.mobile}}
+                                <span v-if="v.isdefault">[默认]</span>
+                            </p>
+            
+                            <p>
+                                {{v.province}} {{v.city}} {{v.district}}
+                            </p>
+            
+                            <p>
+                                {{v.detailAddress}}
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+                 </transition>
+                <div class="am-panel am-panel-default active" v-if="!off">
+                    <div class="am-panel-bd">
+                        <p>
+                            <span>{{arr[arrIndex].person}}</span> {{arr[arrIndex].mobile}}
+                            <span v-if="arr[arrIndex].isdefault">[默认]</span>
+                        </p>
+        
+                        <p>
+                            {{arr[arrIndex].province}} {{arr[arrIndex].city}} {{arr[arrIndex].district}}
+                        </p>
+        
+                        <p>
+                            {{arr[arrIndex].detailAddress}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="my-search-title-panel am-text-sm am-margin-bottom-sm">
+                <i class="am-icon-lightbulb-o am-text-danger"></i> 提示：实际的运费可能因为收货地址的不同而有差异，具体以提交之后系统计算或卖家协商为准</div>
+            <div class="paoduct-title-panel">
+                <h2 class="checkout-h2"> 确认订单信息</h2>
+                <div class="cart-list-panel">
+                    <ul class="am-avg-sm-1 cart-panel-ul">
+                        <li v-for="v in shop">
+                            <div class="imgpanel">
+                                <a href="#">
+                                    <img :src="v.shop.photo" class="am-img-responsive" />
+                                </a>
+                            </div>
+                            <div class="infopanel">
+                                <h3>
+                                    <a href="#">{{v.shop.name}}</a>
+                                </h3>
+                                
+                                <p>价格：
+                                    <span class="red2 bold">{{v.shop.shop_goods_sorts[v.select].originalPrice}}</span> 元 
+                                </p>
+                                <p>积分：
+                                    <span class="red2 bold">{{v.shop.shop_goods_sorts[v.select].integration}}</span>
+                                    规格：<span class="red2 bold">{{v.shop.shop_goods_sorts[v.select].name}}</span>
+                                </p>
+                                <p>数量：
+                                    <span class="red2 bold">{{v.num}}</span>     
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cart_foot">共
+                    <span class="red2 bold" id="total_good">{{allnum}}</span>件商品；总价：
+                    <span class="red2 bold" id="total_amount">{{allprice}}</span>元；总积分：
+                    <span class="red2 bold" id="total_jifen">{{allintegration}}</span>
+                </div>
+
+            </div>
+
+
+            <div class="paoduct-title-panel">
+                <div>
+                    <ul class="am-avg-sm-2 am-text-center">
+                        <li class="am-text-center am-padding-sm">
+                            <button type="button" class="am-btn am-btn-danger am-btn-block am-radius" @click="buy">立即付款</button>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer class="am-footer am-footer-default">
+            <hr  class="am-divider am-divider-default" />
+            <div class="am-footer-miscs ">
+                <p>CopyRight©2014 AllMobilize Inc.</p>
+                <p>京ICP备13033158</p>
+            </div>
+        </footer>
+        <!--底部-->
+    </div>
+        <script src="./js/axios.min.js"></script>
+        <script src="./js/checkout.js"></script>
+</body>
+
+</html>

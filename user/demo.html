@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .address {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, .5);
+        }
+
+        .address .content {
+            width: 90%;
+            height: 450px;
+            margin: 80px auto 0;
+            overflow-y: scroll;
+            padding: 5px;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        .address .content .list {
+            height: 80px;
+            line-height: 25px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding-left: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .address .content .mo {
+            color: red;
+        }
+
+        .address .content .active {
+            border-color: rgb(183, 94, 94);
+            box-shadow: 1px 1px 5px rgb(187, 91, 91);
+        }
+        .addset{
+            text-align: center;
+            margin-top: 10px;
+        }
+        .addset .setadd{
+            border:none;
+            padding: 8px;
+            font-size: 16px;
+            background: #F44336;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .addset .f{
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="address">
+        <div class="content">
+            <div class="list active">
+                <p>胡长江
+                    <span class="tel">15039922892</span>
+                    <span class="mo">[默认]</span>
+                </p>
+                <p>河南 郑州 金水区 </p>
+                <p>农业路政七街省汇中心B座710室</p>
+            </div>
+            
+          
+            <div class="list">
+                <p>胡长江
+                    <span class="tel">15039922892</span>
+                    <span class="mo">[默认]</span>
+                </p>
+                <p>河南 郑州 金水区 </p>
+                <p>农业路政七街省汇中心B座710室</p>
+            </div>
+
+        </div>
+        <div class="addset">
+            <button type="button" class="setadd f">添加地址</button>
+            <button type="button" class="setadd">确认地址</button>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+.header{
+    height: 138px;
+    background: #FB4F39;
+    width: 100%;
+
+    position: relative;
+   
+}
+.header>div{
+    max-width: 540px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    height: 138px;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+.head{
+    position: absolute;
+    height: 1.875rem;
+    width: 1.875rem;
+    margin-left:0.625rem;
+    border-radius: 50%;
+    overflow: hidden;
+   top: 50%;
+   margin-top: -0.9375rem;
+}
+.head>img{
+    height: 1.875rem;
+    width: 1.875rem;
+}
+.h_text{
+    color: #fff;
+    position: absolute;
+    height: 1.3125rem;
+    left: 3.125rem;
+    top: 50%;
+    margin-top: -0.6rem;
+    font-size: 0.4375rem;
+    line-height: 0.6rem;
+}
+.num{
+    font-size: 0.32rem;
+}
+.icon-renzheng:before {
+    content: "\e62d";
+    color: #FFD11E;
+    margin-left: 8px;
+    position: relative;
+    top:-.238095rem ;
+}
+.icon-xiangyou{
+    color: #666;
+}
+.prize{
+    height: 57px;
+    border-bottom: 1px dotted #c9c9c9;
+    padding-left: .71875rem;
+    max-width: 540px;
+    margin:  0 auto;
+}
+.icon_p::before{
+    font-size:21px;
+    line-height: 57px;
+}
+.my_p{
+    font-size: 16px;
+    margin-left: 5px;
+}
+.p_to{
+    float: right;
+    line-height: 57px;
+    margin-right: .625rem;
+}

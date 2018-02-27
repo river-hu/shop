@@ -1,0 +1,92 @@
+*{
+    margin: 0;padding: 0;
+}
+.seach{
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+    height: 50px;
+    padding: 5px .277778rem ;
+    box-sizing: border-box;
+    background: rgb(236, 238, 240);
+    position: relative;
+}
+.seach_in{
+    width: 9.388889rem;
+    margin: 0 auto;
+    height: 34px;
+    border: 1px solid rgb(220, 222, 222);
+    outline: none;
+    border-radius: 15px;
+    padding-left: .694444rem;
+    box-sizing: border-box;
+}
+
+.fang{
+    position: absolute;
+    right: .833333rem;
+    top: 14px;
+    color: rgb(220, 222, 222);
+}
+.content{
+    background: rgb(242, 242, 242);
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+}
+body{
+    background: rgb(242, 242, 242);
+}
+.list{
+    width: 100%;
+    height: 125px;
+    background: #fff;
+    margin-bottom: 7px;
+    padding-left: .2rem;
+    padding-top: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.list img{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.text{
+    float: left;
+   margin-left: .15625rem;
+}
+ul{
+    list-style: none;
+    margin-top: 18px;
+    font-size: .40625rem;
+}
+.title{
+    color: red;
+}
+.name{
+    margin-left: .15rem;
+}
+.more{
+    text-align: center;
+    line-height: 40px;
+    color: #333;
+    font-size: .375rem;
+}
+.none{
+    text-align: center;
+    line-height: 40px;
+    color: #333;
+    font-size: .375rem;
+}
+.null{
+    text-align: center;
+    font-size: .380952rem;
+    margin-top: 1.190476rem;
+    color: #666;
+}
+.null span{
+    font-size: 2.2rem;
+    color: #999;
+    line-height: 4.0rem;
+}

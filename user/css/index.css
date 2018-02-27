@@ -1,0 +1,82 @@
+.header{
+    height: 138px;
+    background: #FB4F39;
+    width: 100%;
+
+    position: relative;
+   
+}
+.header>div{
+    max-width: 540px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    height: 138px;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+.head{
+    position: absolute;
+    height: 1.875rem;
+    width: 1.875rem;
+    margin-left:0.625rem;
+    border-radius: 50%;
+    overflow: hidden;
+   top: 50%;
+   margin-top: -0.9375rem;
+}
+.head>img{
+    height: 1.875rem;
+    width: 1.875rem;
+}
+.h_text{
+    color: #fff;
+    position: absolute;
+    height: 1.3125rem;
+    left: 3.125rem;
+    top: 50%;
+    margin-top: -0.65625rem;
+    font-size: 0.4375rem;
+    line-height: 0.75rem;
+}
+.number{
+    color: #FFD11E;
+}
+.prize{
+    height: 57px;
+    display: block;
+    border-bottom: 1px dotted #c9c9c9;
+    padding-left: .71875rem;
+    max-width: 540px;
+    margin:  0 auto;
+    overflow: hidden;
+}
+.icon_p::before{
+    font-size:21px;
+    line-height: 57px;
+    font-weight: bold;
+    color: #666;
+}
+.jilu::before{
+    font-size: 19px;
+    margin-right: 2px;
+}
+.my_p{
+    font-size: 16px;
+    position: relative;
+    top: -2px;
+    left: 5px;
+    color: #333;
+}
+.p_to{
+    float: right;
+    line-height: 57px;
+    margin-right: .625rem;
+    color: #666;
+}

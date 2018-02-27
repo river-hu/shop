@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中奖记录</title>
+    <link rel="stylesheet" href="./css/record.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <script src="../js/flex.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div class="header">
+    <ul >
+        <li>时间</li>
+        <li class="bor">类型</li>
+        <li>名称</li>
+    </ul>
+</div>
+<div class="box">
+    <ul v-for="v in arr">
+        <li>{{v.str1|year}}.{{v.str1|month|addzero}}.{{v.str1|day|addzero}} {{v.str1|hour|addzero}}:{{v.str1|minutes|addzero}}</li>
+        <li  class="cen">{{v.prize.prizetypeid?"积分":"实物"}}</li>
+        <li>{{v.prize.name}}</li>
+    </ul>
+
+</div>
+<script src="../js/vue.time.js"></script>
+<script src="../js/axios.min.js"></script>
+<script src="./js/record.js"></script>
+</body>
+</html>

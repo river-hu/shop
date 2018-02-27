@@ -1,0 +1,56 @@
+*{
+    margin: 0;padding: 0;
+    outline: none;
+}
+.header{
+    text-align: center;
+    width: 100%;
+    margin-top: 1.2rem;
+    font-size: .68rem;
+    color: #666;
+}
+.content{
+    margin: 1.4rem auto 0  ;
+    width: 77%;
+    max-width: 350px;
+}
+.phone{
+    width: 100%;
+}
+.phone_u{
+    display: block;
+    border: none;
+    border-bottom: 1px solid rgb(202, 202, 202);
+    width: 100%;
+    max-width: 350px ;
+    font-size: .46875rem;
+    padding:.28125rem 0;
+}
+.code,.ok{
+    margin-top: .9375rem;
+    width: 100%;
+    position: relative;
+}
+.btn{
+    width: 85px;
+    height: 29px;
+    background: rgb(255, 75, 55);
+    color: #fff;
+    text-align: center;
+    line-height: 29px;
+     position: absolute;
+     bottom:6px;
+     right: 0;
+}
+.btn_ok{
+    background: rgb(255, 75, 55);
+    color: #fff;
+    border-radius: 10px;
+}
+.ded{
+    background: #999;
+}
+
+
+
+

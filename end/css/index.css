@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.app{
+    text-align: center;
+    padding-top: 4.761905rem;
+}
+.iconfont{
+    font-size: 2.380952rem;
+}
+.success{
+    color: rgb(34, 250, 26);
+}
+.fail{
+    color: red;
+}
+.status{
+    font-size: .714286rem;
+    line-height: 3rem;
+    color: #999;
+}

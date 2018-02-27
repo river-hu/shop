@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>幸运大转盘</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="../js/flex.js"></script>
+    <style>
+        #loading {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 1100;
+            background: rgba(255, 255, 255, .91);
+        }
+
+        #loading img {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            margin: 100px auto 0;
+        }
+    </style>
+</head>
+
+<body>
+        <div id="loading" >
+                <img src="./img/loading.gif" alt="加载中...">
+            </div>
+    <div id="body" :style="{'height':height}" v-cloak>
+        <div class="title">
+            <div class="top">
+                <img src="./img/title.png" alt="" class="list1">
+            </div>
+        </div>
+        <div class="pan" id="bg" :style="{'transform':' rotate('+num+'deg)'}">
+            <div class="item" v-for="v in pan">
+                <div>{{v.prize.name}}</div>
+                <img :src="v.prize.photo" :alt="v.prize.name">
+            </div>
+        </div>
+        <div class="zhen" id="zhen" @click="start">
+           
+        </div>
+        <img :src="over_src" alt="" class="over" id="over" v-if="over_src!=''" @click="go_user">
+        <div class="jiang_y" v-if="over_src!=''&&over_src!='./img/over.png'" @click="go_user">
+            <img :src="prize.photo" alt="" id="lipin" v-if="prize.photo!= ''">
+            <p v-if="prize.photo!= ''">{{prize.name}}</p>
+            <p style="margin-top:-3px;color:rgb(243, 44, 82)" v-if="prize.photo!= ''">一等奖</p>
+        </div>
+        <div class="bottom">@千寻科技公司提供技术支持</div>
+    </div>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/jquery-3.1.0.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="./js/index.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的奖品</title>
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" href="./css/prize.css">
+    <script src="../js/flex.js"></script>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div class="meng" v-show="off" v-cloak>
+        <div class="center">
+            <div class="close">
+                <span class="iconfont icon-guanbi" @click="close"></span>
+            </div>
+            <div class="name"> 兑换码 </div>
+            <div class="er"></div>
+            <div class="name1">{{prize.prize.name}}</div>
+            <div class=" name1 time">截止日期: {{prize.prize.publishdate|year}}.{{prize.prize.publishdate|month|addzero}}.{{prize.prize.publishdate|day|addzero}}
+                {{prize.prize.publishdate|hour|addzero}}:{{prize.prize.publishdate|minutes|addzero}}
+            </div>
+        </div>
+    </div>
+    <div class="app">
+        <div class="header">
+            <div class="list" @click="togglef(1)" :class="{active:toggle}">未兑换</div>
+            <div class="list" @click="togglef(0)" :class="{active:!toggle}">已失效</div>
+        </div>
+        <div class="address" v-if="codeOff">
+            <div class="content">
+                <div class="list" :class="{active:index==addIndex}" v-for="(v,index) in address" @click="toggleAddress(index)">
+                    <p>{{v.person}}
+                        <span class="tel">{{v.mobile}}</span>
+                        <span class="mo" v-if="v.isdefault">[默认]</span>
+                    </p>
+                    <p>{{v.province}} {{v.city}} {{v.district}} </p>
+                    <p>{{v.detailAddress}}</p>
+                </div>
+
+            </div>
+            <div class="addset">
+                <button type="button" class="setadd f" @click="go_address">添加地址</button>
+                <button type="button" class="setadd" @click="okAddress">确认地址</button>
+            </div>
+
+        </div>
+        <div class="content" v-show="toggle">
+            <div class="list" v-for="(v,index) in arr" v-if="loading">
+                <div class="time">
+                    抽奖时间：{{v.str1|year}}年{{v.str1|month|addzero}}月{{v.str1|day|addzero}}日 {{v.str1|hour|addzero}}:{{v.str1|minutes|addzero}}
+                </div>
+                <div class="body">
+                    <img :src="v.prize.photo" :alt="v.prize.name">
+                    <div class="text">
+                        <div class="title">{{v.str4}}</div>
+                        <div class="con">{{v.prize.name}}</div>
+                    </div>
+                    <div class="btn">
+                        <button class="code" @click="code(index)">立即领取</button>
+                        <div class="bottom">截止日期： {{v.prize.publishdate|year}}.{{v.prize.publishdate|month|addzero}}.{{v.prize.publishdate|day|addzero}}
+                            {{v.prize.publishdate|hour|addzero}}:{{v.prize.publishdate|minutes|addzero}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="loading" v-else>
+                <img src="./img/loading.gif" alt="">
+            </div>
+            <div class="null" v-if="arr.length==0">
+                <span class="iconfont icon-wukongbiaoqing"></span>
+                <br> 啊呀，暂无任何奖品呢~
+            </div>
+        </div>
+        <div class="content file" v-show="!toggle">
+            <div class="list" v-for="v in arred" v-if="loading1">
+                <div class="body">
+                    <img :src="v.prize.photo" :alt="v.prize.name">
+                    <div class="text">
+                        <div class="title">{{v.str4}}</div>
+                        <div class="con">{{v.prize.name}}</div>
+                    </div>
+                    <div class="btn">
+                        <div class="iconfont icon-yiduihuan dui" v-if="v.str3!='已失效'"></div>
+                        <div class="iconfont icon-yishixiao1 dui" v-if="v.str3=='已失效'"></div>
+                        <div class="bottom" v-if="v.str3=='已失效'">
+                            {{v.str1|year}}.{{v.str1|month|addzero}}.{{v.str1|day|addzero}} {{v.str1|hour|addzero}}:{{v.str1|minutes|addzero}}
+                        </div>
+                        <div class="bottom" v-if="v.str3!='已失效'">
+                            {{v.str2|year}}.{{v.str2|month|addzero}}.{{v.str2|day|addzero}} {{v.str2|hour|addzero}}:{{v.str2|minutes|addzero}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="null" v-if="arred.length==0&&loading1">
+                <span class="iconfont icon-wukongbiaoqing"></span>
+                <br> 啊呀，暂无任何奖品呢~
+            </div>
+            <div class="loading" v-if="!loading1">
+                <img src="./img/loading.gif" alt="">
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery-3.1.0.js"></script>
+    <script src="../js/jquery.qrcode.min.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/prize.js"></script>
+</body>
+
+</html>

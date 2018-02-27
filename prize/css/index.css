@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#body{
+    width: 100%;
+    background: url(../img/bg.png) no-repeat;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+    padding-top: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+.title{
+    height: 2.5rem;
+}
+.top{
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    
+}
+.top img{
+    width: 100%;
+}
+.pan{
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    height: 300px;
+    margin-left: -150px;
+    left: 50%;
+    margin-top: -150px;
+    overflow: hidden;
+    border-radius: 150px;
+    background: url(../img/pan_bg.png);
+    background-size: cover;
+    transition: transform 3s linear;
+    transform: rotate(0deg);
+}
+.item{   
+    width: 70px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    margin-left: -36px;
+    top: 39px;
+    text-align: center;
+    color: #e1e1e1;
+    transform-origin: 51.6% 223%;
+}
+.item img{
+    width: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -15px;
+}
+.item div{
+    font-size: 8px
+}
+.item:nth-child(2){
+    transform: rotate(60deg);
+}
+.item:nth-child(2n){
+    color: #444;
+}
+.item:nth-child(3){
+    transform: rotate(120deg);
+}
+.item:nth-child(4){
+    transform: rotate(180deg);
+}
+.item:nth-child(5){
+    transform: rotate(240deg);
+}
+.item:nth-child(6){
+    transform: rotate(300deg);
+}
+
+.zhen{
+    position: absolute;
+    top: 50%;
+    width: 300px;
+    height: 300px;
+    margin-left: -150px;
+    left: 50%;
+    margin-top: -150px;
+    overflow: hidden;
+    background: url(../img/zhen.png);
+    background-size: cover;
+    text-align: center;
+}
+.zhen img{
+    margin-top: 125px;
+}
+.over{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+    top: 0%;
+    left: 0%;
+}
+.bottom{
+    font-size:12px;
+    width: 100%;
+    text-align: center;
+    bottom: .166667rem;
+    color: #666;
+    position: absolute;
+}
+.jiang_y{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top:45%;
+    left: 50%;
+    margin-top: -55px;
+    z-index: 200;
+    margin-left: -50px;
+    /* display: none; */
+}
+.jiang_y img{
+    display: block;
+    width: 68px;
+    height: 68px;
+    margin: 3px auto;
+}
+.jiang_y p{
+    text-align: center;
+    color: #666;
+    margin-top: -5px;
+    font-size: 12px;
+    padding-top: 3px;
+}
+.jiang_y span{
+    line-height:70px;
+}
+.num{
+    font-size: 36px;
+    color: rgb(238, 46, 80);
+
+}
+[v-cloak]{
+    display: none;
+}

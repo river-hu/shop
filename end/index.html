@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>核销结果</title>
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="../js/flex.js"></script>
+</head>
+<body>
+<div class="app" v-if="loading">
+    <div v-if="loading">
+    <div class="iconfont icon-chenggong1 success"  v-if="toggle==200"></div>
+    <div class="iconfont icon-shibai fail" v-else></div>
+    <div class="status">{{text}}</div>
+</div>
+</div>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>

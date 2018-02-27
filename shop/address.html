@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>收货地址</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="amazeui/css/amazeui.min.css" />
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <link rel="stylesheet" href="./css/address.css">
+    <script src="../js/vue.js"></script>
+    <script src="./js/my.js"></script>  
+</head>
+
+<body>
+        <div id="loading">
+            <img src="./font/loading.gif" alt="加载中...">
+        </div>
+    <div class="container">
+        <header data-am-widget="header" class="am-header am-header-default my-header">
+            <div class="am-header-left am-header-nav">
+                <a href="javascript: history.go(-1);" class="">
+                    <i class="iconfont icon-return"></i>
+                </a>
+            </div>
+            <h1 class="am-header-title">
+                <a href="#title-link" class="">收货地址</a>
+            </h1>
+            <div class="am-header-right am-header-nav">
+                <a href="./index.html" class="">
+                    <i class="iconfont  icon-homepage_fill"></i>
+                </a>
+            </div>
+        </header>
+        <div class="am-panel am-panel-default" v-if="arr.length!=0" v-for="(v,index) in arr">
+            <div class="am-panel-bd">
+                <p>
+                    <span>{{v.person}}</span> {{v.mobile|phone}}
+                    <span v-if="v.isdefault">[默认]</span>
+                </p>
+                <p>
+                    {{v.province}} {{v.city}} {{v.district}}
+                </p>
+                <p>
+                    {{v.detailAddress}}
+                </p>
+                <transition name="fade">
+                <form action="" style="background:#fff;" class="am-form am-form-inline" v-if="arrIndex==index">
+                    <div class="am-form-group am-form-icon">
+                        <i class="iconfont icon-people"></i>
+                        <input type="text" class="am-form-field" placeholder="收件人" v-model="v.person">
+                    </div>
+                    <div class="am-form-group am-form-icon">
+                        <i class="iconfont icon-mobilephone"></i>
+                        <input type="number" class="am-form-field" placeholder="联系电话" v-model="v.mobile">
+                    </div>
+                    <div class="am-form-group am-form-icon dizhi">
+
+                        <select v-model="sheng">
+                            <option :value="v.name" v-for="v in address">{{v.name}}</option>
+                          </select>
+                          <select v-model="city">
+                            <option :value="v.name" v-for="v in address_city">{{v.name}}</option>
+                          </select>
+                          <select v-model="qu">
+                                <option :value="v" v-for="v in address_area">{{v}}</option>
+                            
+                          </select>
+                        
+                    </div>
+                    <div class="am-form-group am-form-icon">
+                        <i class="icon-coordinates iconfont"></i>
+                        <input type="text" class="am-form-field" placeholder="地址详情" v-model="v.detailAddress">
+                    </div>
+
+                    <div class="am-form-group am-form-icon setbtn">
+                        <button @click="defaul(index)" type="button" class="am-btn am-btn-default am-radius">设为默认</button> <button type="button" class="am-btn am-btn-default am-radius" @click="updata(index)">保存修改</button><button type="button" class="am-btn am-btn-danger am-radius" @click="delet(index)">删除</button>
+                    </div>                   
+                </form>
+            </transition>
+            </div>
+            <button class="set iconfont icon-decoration_fill" @click="set(index)">
+                
+            </button>
+        </div>
+        <div v-else class="none">
+            没有收货地址
+        </div>
+        <div class="footer" @click="add_toggle">
+            <span class="iconfont " :class="{'icon-packup':add_off,'icon-add':!add_off}"></span>
+           
+        </div>
+        <div v-show="add_off">
+      
+                <form action="" class="am-form am-form-inline" >
+                    <div class="am-form-group am-form-icon">
+                        <i class="iconfont icon-people"></i>
+                        <input type="text" class="am-form-field" placeholder="收件人" v-model="user">
+                    </div>
+                    <div class="am-form-group am-form-icon">
+                        <i class="iconfont icon-mobilephone"></i>
+                        <input type="number" class="am-form-field" placeholder="联系电话" v-model="tel">
+                    </div>
+                    <div class="am-form-group am-form-icon dizhi">
+
+                        <select v-model="sheng">
+                            <option :value="v.name" v-for="v in address">{{v.name}}</option>
+                          </select>
+                          <select v-model="city">
+                            <option :value="v.name" v-for="v in address_city">{{v.name}}</option>
+                          </select>
+                          <select v-model="qu">
+                                <option :value="v" v-for="v in address_area">{{v}}</option>
+                            
+                          </select>
+                    </div>
+                    <div class="am-form-group am-form-icon">
+                        <i class="icon-coordinates iconfont"></i>
+                        <input type="text" class="am-form-field" placeholder="地址详情" v-model="dec">
+                    </div>
+
+                    <div class="am-form-group am-form-icon setbtn">
+                        <button type="button" @click="cancel" class="am-btn am-btn-default am-radius">取消添加</button> <button type="button" class="am-btn am-btn-default am-radius" @click="add">确认添加</button>
+                    </div>                   
+                </form>
+        </div>
+        <footer data-am-widget="footer" class="am-footer am-footer-default" data-am-footer="{  }">
+            <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+            <div class="am-footer-miscs ">
+                <p>CopyRight©2014 AllMobilize Inc.</p>
+                <p>京ICP备13033158</p>
+            </div>
+        </footer>
+        <!--底部-->
+    </div>
+    
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/address.js"></script>
+</body>
+
+</html>

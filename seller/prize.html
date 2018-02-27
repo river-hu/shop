@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>核销记录查看</title>
+    <link rel="stylesheet" href="./css/frize.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <script src="../js/flex.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <div class="seach">
+            <input type="text" placeholder="请输入奖品名称" class="seach_in" v-model="search">
+            <span class="iconfont icon-fangdajing fang"> </span>
+        </div>
+        <div class="content">
+            <div class="list" v-for="v in prize" v-if="status==200">
+                <img :src="v.prize.photo" :alt="v.prize.name" style=" margin-left: .5rem;margin-right: .5rem;">
+                <div class="text">
+                    <ul>
+                        <li>
+                            <span class="name"> {{v.str2}}</span>
+                        </li>
+                        <li>
+                            <span class="name"> {{v.str1|year}}-{{v.str1|month|addzero}}-{{v.str1|day|addzero}} {{v.str1|hour|addzero}}:{{v.str1|minutes|addzero}}</span>
+                        </li>
+                        <li>
+                            <span class="name"> {{v.prize.name}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="null" v-if="status==404">
+                <span class="iconfont icon-wukongbiaoqing"></span>
+                <br> 暂无核销记录
+            </div>
+
+            <div class="more" v-if="page<all">下拉查看更多
+                <span class="iconfont icon-down-trangle-copy-copy"></span>
+            </div>
+            <div class="none" v-if="prize.length>6&&page<=all"> 已经到底啦 </div>
+        </div>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue.time.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script src="./js/prize.js"></script>
+</body>
+
+</html>

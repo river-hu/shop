@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <script src="../js/flex.js"></script>
+</head>
+
+<body>
+    <div class="app" v-if="loading" v-cloak>
+        <div class="header">
+            <div>
+                <div class="head">
+                    <img :src="user.headimgurl" alt="">
+                </div>
+                <div class="h_text">
+                    <div>{{user.nickname}}
+                        <sapn class="iconfont  icon-renzheng"></sapn>
+                    </div>
+                    <div class="num">{{core|phone}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="prize">
+            <span class="iconfont icon-hexiao icon_p"></span>
+            <span class="my_p"> 我的核销</span>
+            <a href="./prize.html" class="p_to">
+                <span class="iconfont icon-xiangyou "></span>
+            </a>
+        </div>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="./js/main0.js"></script>
+</body>
+
+</html>

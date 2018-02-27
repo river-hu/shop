@@ -91,15 +91,12 @@ var vm = new Vue({
 
         },
         buy: function () {//go to buy goods now
-            var jsons = [{
-                num: vm.num,
-                shop: vm.shop,
-                select: 0
-            }];
+            var jsons = [];
             if(this.all_marey!=0){
                 for (var i in this.arr) {
                     if (this.arr[i].off) {
-                        this.arr[i].shop_goods_sorts[0]=this.arr[i].shopGoodsSort;
+                        this.arr[i].shop_goods_sorts=[];
+                        this.arr[i].shop_goods_sorts.push(vm.arr[i].shopGoodsSort);
                         jsons.push({
                             num:vm.arr[i].count,
                             shop:vm.arr[i],
@@ -107,7 +104,7 @@ var vm = new Vue({
                         })
                     }
                 }
-                
+                sessionStorage.buyshop='';
                 sessionStorage.buyshop = JSON.stringify(jsons);
                 window.location.href = "./checkout.html";
 

@@ -36,6 +36,7 @@ var vm = new Vue({
         allnum: 0,
         allprice: 0,
         allintegration: 0,
+        integral:0
     },
     methods: {
         toggle: function () {
@@ -47,11 +48,29 @@ var vm = new Vue({
 
         },
         addall: function () {
+            var mroe = 0;//折扣后的价钱
+            var all = 0;//总的积分
+            var omroe = 0;//积分抵扣之前的价钱
             for (var i in this.shop) {
-                this.allnum += this.shop[i].num;
-                this.allprice += this.shop[i].shop.shop_goods_sorts[this.shop[i].select].price;
-                this.allintegration += this.shop[i].shop.shop_goods_sorts[this.shop[i].select].integration;
+                    this.allnum += this.shop[i].num;
+                    mroe += this.shop[i].shop.shop_goods_sorts[this.shop[i].select].price * this.shop[i].num;
+                    all += this.shop[i].shop.shop_goods_sorts[this.shop[i].select].integration * this.shop[i].num;
+                    omroe +=this.shop[i].shop.shop_goods_sorts[this.shop[i].select].originalPrice * this.shop[i].num;
             }
+            if(all<this.integral){
+                this.allprice = mroe;
+                this.allintegration = all;
+            }
+            if(this.integral==0){
+                this.allprice = omroe;
+                this.allintegration = 0;
+            }
+            if(this.arr.length==1&&all>this.integral){
+                this.allprice = omroe - this.exchange*this.integral;
+                this.allintegration = this.integral;
+            }
+
+           
         },
         buy: function () {
             var shopjson = [];
@@ -107,6 +126,7 @@ var vm = new Vue({
         }).then(function (response) {
             console.log(response);
             var id = response.data.data.id;
+            vm.integral = response.data.data.integral;
             console.log(id);
             axios.get("http://yunzhujia.qx1688.net/oneqrcode/receivingAddressController/query.do", {
                 params: {

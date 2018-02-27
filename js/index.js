@@ -68,6 +68,16 @@ var vm = new Vue({
             }
             this.go();  
 
+        },
+        goto_dec:function(index){
+            if(this.page.list[index].shop_goods_sorts.length!=0){
+                window.location.href="./dec.html?id="+this.page.list[index].id
+            }else{
+                showModel({
+                    icon:"icon-warning",
+                    text:"暂无此商品的详细数据"
+                },1500)
+            }
         }
     },
     created:function(){

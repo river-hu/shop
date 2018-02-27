@@ -51,8 +51,7 @@
         <div class="title">商品列表</div>
         <div class="am-cf am-g">
             <ul class="am-avg-sm-2 my-shop-product-list">
-                <li v-for="(v,index) in page.list" :key="index">
-                    <a href="./dec.html">
+                <li v-for="(v,index) in page.list" :key="index" @click="goto_dec(index)">
                         <div class="am-panel am-panel-default">
                             <div class="am-panel-bd">
                                 <img class="am-img-responsive" :src="v.photo" alt="暂无图片"/>
@@ -72,7 +71,6 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
                 </li>
                 
             </ul>

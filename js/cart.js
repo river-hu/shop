@@ -183,8 +183,7 @@ var vm = new Vue({
             var id = response.data.data.id;
 
             vm.integral = response.data.data.integral;
-            vm.integral = 125;//******************************************************************** */
-            this.exchange = 0.1;
+            this.exchange = 0.1;//************************************************************ */
             axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopCarController/query.do", {//请求购物车数据
                 params: {
                     "wechat_user_id": id,

@@ -142,7 +142,7 @@ var vm = new Vue({
                     omroe += this.arr[i].shopGoodsSort.originalPrice * this.arr[i].count;
                 }
             }
-            if(this.arr.length>1&&all>this.integral){
+            if(this.arr.length>1&&all>this.integral&&this.integral!=0){
                 showModel({
                     icon:'icon-warning',
                     text:'积分不足，请分开购买单类商品'
@@ -155,9 +155,13 @@ var vm = new Vue({
             if(all<this.integral){
                 this.all_marey = mroe;
             }
+            if(this.integral==0){
+                this.all_marey = omroe;
+            }
             if(this.arr.length==1&&all>this.integral){
                 this.all_marey = omroe - this.exchange*this.integral;
             }
+
         },
         check_all: function () {//全选功能
             this.all = !this.all;

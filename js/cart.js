@@ -55,7 +55,8 @@ var vm = new Vue({
         marey: 0,
         all_marey: 0,
         loading: false,
-        integral:0
+        integral:0,
+        exchange:0.1
     },
     methods: {
         check: function (index) {
@@ -90,7 +91,32 @@ var vm = new Vue({
 
         },
         buy: function () {//go to buy goods now
+            var jsons = [{
+                num: vm.num,
+                shop: vm.shop,
+                select: 0
+            }];
+            if(this.all_marey!=0){
+                for (var i in this.arr) {
+                    if (this.arr[i].off) {
+                        this.arr[i].shop_goods_sorts[0]=this.arr[i].shopGoodsSort;
+                        jsons.push({
+                            num:vm.arr[i].count,
+                            shop:vm.arr[i],
+                            select:0
+                        })
+                    }
+                }
+                
+                sessionStorage.buyshop = JSON.stringify(jsons);
+                window.location.href = "./checkout.html";
 
+            }else{
+                showModel({
+                    icon:'icon-warning',
+                    text:'您没有购买选中商品'
+                },1500)
+            }
 
         },
         jian: function (index) {//数量减1
@@ -109,13 +135,32 @@ var vm = new Vue({
 
         },
         addall: function () {//计算全部选中商品的价格总和
-            var mroe = 0;
+            var mroe = 0;//折扣后的价钱
+            var all = 0;//总的积分
+            var omroe = 0;//积分抵扣之前的价钱
             for (var i in this.arr) {
                 if (this.arr[i].off) {
                     mroe += this.arr[i].shopGoodsSort.price * this.arr[i].count;
+                    all += this.arr[i].shopGoodsSort.integration * this.arr[i].count;
+                    omroe += this.arr[i].shopGoodsSort.originalPrice * this.arr[i].count;
                 }
             }
-            this.all_marey = mroe;
+            if(this.arr.length>1&&all>this.integral){
+                showModel({
+                    icon:'icon-warning',
+                    text:'积分不足，请分开购买单类商品'
+                },1500)
+                for (var i in this.arr) {
+                    this.arr[i].off = false;
+                }
+                this.all_marey = 0;
+            }
+            if(all<this.integral){
+                this.all_marey = mroe;
+            }
+            if(this.arr.length==1&&all>this.integral){
+                this.all_marey = omroe - this.exchange*this.integral;
+            }
         },
         check_all: function () {//全选功能
             this.all = !this.all;
@@ -135,7 +180,10 @@ var vm = new Vue({
         }).then(function (response) {
             console.log(response);
             var id = response.data.data.id;
+
             vm.integral = response.data.data.integral;
+            vm.integral = 125;//******************************************************************** */
+            this.exchange = 0.1;
             axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopCarController/query.do", {//请求购物车数据
                 params: {
                     "wechat_user_id": id,

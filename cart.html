@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="./css/cart.css">
 <script src="./js/axios.min.js"></script>
 <script src="./js/vue.js"></script>
-<script src="../js/main.js"></script>
+<!-- <script src="../js/main.js"></script> -->
 <script src="./js/my.js"></script>
 </head>
 
@@ -40,7 +40,7 @@
                 	<div class="imgpanel"><a href="#"><img :src="v.shopGoods.photo" class="am-img-responsive"  /></a></div>
                 	<div class="infopanel">
                     	<h3><a href="#" class="title">{{v.shopGoods.name}}</a></h3>
-                        <p>价格：<span class="red2 bold">{{v.shopGoodsSort.price}}</span> 元
+                        <p>价格：<span class="red2 bold">{{v.shopGoodsSort.originalPrice}}</span> 元
                         </p>
                         <p>积分：<span class="red2 bold">{{v.shopGoodsSort.integration}} </span> 规格：<span class="red2 bold">{{v.shopGoodsSort.name}}</span>
                         </p>

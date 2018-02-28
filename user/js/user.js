@@ -9,7 +9,9 @@ var vm = new Vue({
         userid:0
     },
     methods:{
-
+        gotomybuy:function(){
+            sessionStorage.userid = this.userid
+        }
     },
     created:function(){
         var openid = localStorage.getItem("openid");

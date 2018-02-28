@@ -147,23 +147,6 @@
     </div>
     <script src="./js/vue.js"></script>
     <script src="./js/mybuy.js"></script>
-    <script>
-        $(function () {
-            $('#doc-prompt-toggle').on('click', function () {
-                $('#my-prompt').modal({
-                    relatedTarget: this,
-                    onConfirm: function (e) {
-                        alert('你输入的是：' + e.data || '')
-                    },
-                    onCancel: function (e) {
-
-                        console.log("取消评价");
-
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>

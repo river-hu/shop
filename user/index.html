@@ -51,11 +51,11 @@
                 </a>
 
             </div>
-            <div class="prize"  >
-                    <a :href="'../shop/mybuy.html?id='+userid">
+            <div class="prize"  @click="gotomybuy">
+                    <a href="../shop/mybuy.html">
                 <span class="iconfont icon-commodity icon_p jilu"></span>
                 <span class="my_p"> 我的订单</span>
-                <a :href="'../shop/mybuy.html?id='+userid" class="p_to">
+                <a href="../shop/mybuy.html" class="p_to">
                     <span class="iconfont icon-enter"></span>
                 </a>
             </a>

@@ -7,6 +7,7 @@ var vm=new Vue({
         num:'',
         num_off:false,
         arrindex:0,
+        userid:0,
         arrnav:[
             {
                 name:'全部订单',
@@ -59,6 +60,16 @@ var vm=new Vue({
         }
     },
     created:function(){
-
+        this.userid = sessionStorage.userid;
+        axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopOrderController/query.do",{
+            params:{
+                'wechat_user_id':vm.userid,
+                page:1,
+                count:10
+            }
+        }).then(function(response){
+            console.log(response.data);
+        }).catch(function(error){
+        })
     }
 })

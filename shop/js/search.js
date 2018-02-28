@@ -3,7 +3,28 @@ var vm = new Vue({
     data:{
         search:"",
         shop:[],
-        allpage:0
+        allpage:0,
+        pageIndex:1
+    },
+    watch:{
+        pageIndex:function(){
+            axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopGoodsController/query.do",{
+                params:{
+                    page:vm.pageIndex,
+                    count:10,
+                    name:vm.search
+                }
+            }).then(function(response){
+                if( response.data.msg=="没有数据"){//非空验证
+                    vm.shop = [];
+                    vm.allpage = 0;
+                }else{
+                    vm.shop = response.data.data.list;
+                    vm.allpage = response.data.data.total;
+                }
+            }).catch(function(error){
+            })
+        }
     },
     methods:{
         goto:function(index){//页面跳转，跳转去商品详情页
@@ -16,6 +37,16 @@ var vm = new Vue({
                 },1500)
             }
             
+        },
+        pre:function(){
+            if(this.pageIndex!=1){
+                this.pageIndex--;
+            }
+        },
+        next:function(){
+            if(this.allpage>1&&this.pageIndex<this.allpage){
+                this.pageIndex++;
+            }
         },
         search_shop:function(){//商品搜索功能
             var search = this.search;

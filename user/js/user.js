@@ -5,7 +5,8 @@ var vm = new Vue({
         core:0,
         loading:false,
         id:0,
-        openid:0
+        openid:0,
+        userid:0
     },
     methods:{
 
@@ -35,6 +36,7 @@ var vm = new Vue({
                         vm.core=response.data.data.integral;
                         vm.id=response.data.data.id;
                         sessionStorage.userid=response.data.data.id;
+                        vm.userid = response.data.data.id
                     }         
                     vm.loading=true;      //数据请求完成 
                     

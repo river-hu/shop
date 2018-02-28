@@ -5,7 +5,26 @@ var vm=new Vue({
         off_text:"点击查看物流信息",
         nin:5,
         num:'',
-        num_off:false
+        num_off:false,
+        arrindex:0,
+        arrnav:[
+            {
+                name:'全部订单',
+                url:'#tab1'
+            },
+            {
+                name: '待发货',
+                url:'#tab2'
+            },
+            {
+                name: '待评价',
+                url:'#tab3'
+            },
+            {
+                name:'已评价',
+                url:'#tab4'
+            }
+        ]
     },
     watch:{
         num:function(){
@@ -34,6 +53,9 @@ var vm=new Vue({
                 
            this.nin=index;
             }
+        },
+        toggle:function(index){
+            this.arrindex = index;
         }
     },
     created:function(){

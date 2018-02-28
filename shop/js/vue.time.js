@@ -24,7 +24,6 @@ Vue.filter('year', function (value) {
           return data.getMinutes();
   })
   Vue.filter('addzero', function (value) {
-    if (!value) return '';
     var num = value<10?'0'+value:value;
     return num;
   })

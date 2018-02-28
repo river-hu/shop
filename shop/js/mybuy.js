@@ -8,6 +8,7 @@ var vm=new Vue({
         num_off:false,
         arrindex:0,
         userid:0,
+        items:[],
         arrnav:[
             {
                 name:'全部订单',
@@ -25,6 +26,12 @@ var vm=new Vue({
                 name:'已评价',
                 url:'#tab4'
             }
+        ],
+        state:[
+            '未完成支付',
+            '未发货',
+            '待评价',
+            '已评价'
         ]
     },
     watch:{
@@ -60,15 +67,22 @@ var vm=new Vue({
         }
     },
     created:function(){
-        this.userid = sessionStorage.userid;
+        // this.userid = sessionStorage.userid;
+        // if(this.userid==''||this.userid==undefined||this.userid=='undefined'){
+        //     window.location.href="../user/index.html";
+        // }
+        // var userid = this.userid;
+        this.userid = 33;
+        var userid = this.userid;
         axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopOrderController/query.do",{
             params:{
-                'wechat_user_id':vm.userid,
-                page:1,
-                count:10
+                'wechat_user_id':userid,
+                'page':1,
+                'count':10
             }
         }).then(function(response){
             console.log(response.data);
+            vm.items = response.data.data.list;
         }).catch(function(error){
         })
     }

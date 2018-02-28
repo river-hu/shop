@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="default/style.css" />
     <link rel="stylesheet" href="./css/search.css">
     <script src="./js/vue.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/my.js"></script>
 </head>
 
 <body>
@@ -40,7 +42,7 @@
                     <input type="text" class="am-form-field am-radius" v-model="search" placeholder="商品搜索">
                     <span class="am-input-group-btn">
                         <button class="am-btn am-radius" type="button" @click="search_shop">
-                            <span class="am-icon-search"></span> 
+                            <span class="am-icon-search"></span>
                         </button>
                     </span>
                 </div>
@@ -48,139 +50,34 @@
         </div>
 
         <div class="my-search-title-panel">
-            <div class="withdrawals-panel">
+            <div class="withdrawals-panel" v-for="(v,index) in shop" @click="goto(index)">
                 <div class="groupby-img-panle">
                     <a href="#">
-                        <img src="default/img3.jpg" class="am-img-responsive" />
+                        <img :src="v.name" class="am-img-responsive" />
                     </a>
                 </div>
                 <div class="groupby-info-panle">
                     <h3>
-                        <a href="#">护手霜</a>
+                        <a href="#">{{v.name}}</a>
                     </h3>
-                    <p>价格：
-                        <span class="am-text-danger">100</span>元</p>
-                    <p>
-                        <p>积分：
-                            <span class="am-text-danger">100</span>
-                        </p>
-                        <p>
-                            <p>
-                                点击查看详情
-                            </p>
+                    <p v-if="v.shop_goods_sorts.length!=0">价格：
+                        <span class="am-text-danger">{{v.shop_goods_sorts[0].originalPrice}}</span>元
+                    </p>
+
+                    <p v-if="v.shop_goods_sorts.length!=0">积分：
+                        <span class="am-text-danger">{{v.shop_goods_sorts[0].integration}}</span>
+                    </p>
+
+                    <p v-if="v.shop_goods_sorts.length!=0">
+                        点击查看详情
+                    </p>
+                    <p v-if="v.shop_goods_sorts.length==0">
+                        暂无相应商品详情
+                    </p>
                 </div>
             </div>
-            <div class="withdrawals-panel">
-                <div class="groupby-img-panle">
-                    <a href="#">
-                        <img src="default/img3.jpg" class="am-img-responsive" />
-                    </a>
-                </div>
-                <div class="groupby-info-panle">
-                    <h3>
-                        <a href="#">护手霜</a>
-                    </h3>
-                    <p>价格：
-                        <span class="am-text-danger">100</span>元</p>
-                    <p>
-                        <p>积分：
-                            <span class="am-text-danger">100</span>
-                        </p>
-                        <p>
-                            <p>
-                                点击查看详情
-                            </p>
-                </div>
-            </div>
-            <div class="withdrawals-panel">
-                <div class="groupby-img-panle">
-                    <a href="#">
-                        <img src="default/img3.jpg" class="am-img-responsive" />
-                    </a>
-                </div>
-                <div class="groupby-info-panle">
-                    <h3>
-                        <a href="#">护手霜</a>
-                    </h3>
-                    <p>价格：
-                        <span class="am-text-danger">100</span>元</p>
-                    <p>
-                        <p>积分：
-                            <span class="am-text-danger">100</span>
-                        </p>
-                        <p>
-                            <p>
-                                点击查看详情
-                            </p>
-                </div>
-            </div>
-            <div class="withdrawals-panel">
-                <div class="groupby-img-panle">
-                    <a href="#">
-                        <img src="default/img3.jpg" class="am-img-responsive" />
-                    </a>
-                </div>
-                <div class="groupby-info-panle">
-                    <h3>
-                        <a href="#">护手霜</a>
-                    </h3>
-                    <p>价格：
-                        <span class="am-text-danger">100</span>元</p>
-                    <p>
-                        <p>积分：
-                            <span class="am-text-danger">100</span>
-                        </p>
-                        <p>
-                            <p>
-                                点击查看详情
-                            </p>
-                </div>
-            </div>
-            <div class="withdrawals-panel">
-                <div class="groupby-img-panle">
-                    <a href="#">
-                        <img src="default/img3.jpg" class="am-img-responsive" />
-                    </a>
-                </div>
-                <div class="groupby-info-panle">
-                    <h3>
-                        <a href="#">护手霜</a>
-                    </h3>
-                    <p>价格：
-                        <span class="am-text-danger">100</span>元</p>
-                    <p>
-                        <p>积分：
-                            <span class="am-text-danger">100</span>
-                        </p>
-                        <p>
-                            <p>
-                                点击查看详情
-                            </p>
-                </div>
-            </div>
-            <div class="withdrawals-panel">
-                <div class="groupby-img-panle">
-                    <a href="#">
-                        <img src="default/img3.jpg" class="am-img-responsive" />
-                    </a>
-                </div>
-                <div class="groupby-info-panle">
-                    <h3>
-                        <a href="#">护手霜</a>
-                    </h3>
-                    <p>价格：
-                        <span class="am-text-danger">100</span>元</p>
-                    <p>
-                        <p>积分：
-                            <span class="am-text-danger">100</span>
-                        </p>
-                        <p>
-                            <p>
-                                点击查看详情
-                            </p>
-                </div>
-            </div>
-            <ul data-am-widget="pagination" class="am-pagination am-pagination-select">
+
+            <ul data-am-widget="pagination" class="am-pagination am-pagination-select" v-if="shop.length!=0">
                 <li class="am-pagination-prev ">
                     <a href="#" class="">上一页</a>
                 </li>
@@ -210,7 +107,7 @@
 
     </div>
     </div>
-    
+
     <script src="./js/search.js"></script>
 </body>
 

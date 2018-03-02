@@ -13,7 +13,7 @@ var vm = new Vue({
             axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopGoodsController/query.do",{
                 params:{
                     "page":vm.pageIndex,
-                    "count":2
+                    "count":10
                 }
             }).then(function(response){
                 console.log(response.data);
@@ -91,7 +91,7 @@ var vm = new Vue({
         axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopGoodsController/query.do",{
             params:{
                 "page":1,
-                "count":2
+                "count":10
             }
         }).then(function(response){
             console.log(response.data);

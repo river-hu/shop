@@ -11,8 +11,11 @@
     <link rel="stylesheet" href="amazeui/css/amazeui.min.css" />
     <link rel="stylesheet" href="./font/iconfont.css">
     <link rel="stylesheet" href="./css/integral.css">
-    <script src="amazeui/js/jquery.min.js"></script>
-    <script src="amazeui/js/amazeui.min.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/jquery-3.1.0.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/vue.time.js"></script>
 </head>
 <body>
     <div class="container">
@@ -42,30 +45,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>抽奖获取</td>
-                                    <td>+100</td>
-                                    <td>2012-10-01</td>
-                                </tr>
-                                <tr>
-                                    <td>购买商品</td>
-                                    <td>-78</td>
-                                    <td>2012-10-01</td>
-                                </tr>
-                                <tr >
-                                    <td>购买商品</td>
-                                    <td>-100</td>
-                                    <td>2012-10-01</td>
-                                </tr>
-                                <tr>
-                                    <td>抽奖获取</td>
-                                    <td>+1002</td>
-                                    <td>2012-10-01</td>
-                                </tr>
-                                <tr>
-                                    <td>购买商品</td>
-                                    <td>-100</td>
-                                    <td>2012-10-01</td>
+                                <tr v-for="v in arr">
+                                    <td>{{v.type}}</td>
+                                    <td>{{v.amount}}</td>
+                                    <td>{{v.date|year}}-{{v.date|month|addzero}}-{{v.date|day|addzero}}</td>
                                 </tr>
                             </tbody>
                 </table>
@@ -81,7 +64,7 @@
         <!--底部-->
 
     </div>
-
+    <script src="./js/integral.js"></script>
 </body>
 
 </html>

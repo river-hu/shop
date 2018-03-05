@@ -86,7 +86,6 @@ var vm = new Vue({
         axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopBannerController/query.do").then(function(response){//请求轮播图数据
             console.log(response);
             vm.binner = response.data.data;
-            hide_loading();//加载完成
         });
         axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopGoodsController/query.do",{
             params:{
@@ -96,6 +95,7 @@ var vm = new Vue({
         }).then(function(response){
             console.log(response.data);
             vm.page=response.data.data;
+            hide_loading();//加载完成
         }).catch(function(){
         });
         this.$nextTick(function(){//启动轮播图

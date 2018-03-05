@@ -70,6 +70,24 @@ var vm = new Vue({
             }
             this.addall();
         },
+        update:function(index){
+            var myDate = new Date();
+            var time = myDate.getTime();//获取当前时间的毫秒数
+
+            axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopCarController/update.do",{
+                params:{
+                    id:vm.arr[index].id,
+                    goodsId:vm.arr[index].goodsId,
+                    count:vm.arr[index].count,
+                    date:time,
+                    wechatUserId:vm.arr[index].wechatUserId,
+                    goodsSortId:vm.arr[index].goodsSortId
+                }
+            }).then(function(response){
+                console.log(response.data);
+            }).catch(function(error){
+            })
+        },
         close: function (index) {//删除购物车单条数据
             axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopCarController/deleteById.do", {
                 params: {
@@ -119,15 +137,19 @@ var vm = new Vue({
         jian: function (index) {//数量减1
             if (this.arr[index].count != 1) {
                 this.arr[index].count--;
-
+                this.update(index);
                 this.addall();
             }
 
         },
         add: function (index) {//数量增加，并选中商品
             this.arr[index].count++;
+
             this.arr[index].off = false;
+
             this.check(index);
+            console.log(this.arr[index]);
+            this.update(index);
             this.addall();
 
         },
@@ -183,7 +205,7 @@ var vm = new Vue({
             var id = response.data.data.id;
 
             vm.integral = response.data.data.integral;
-            this.exchange = 0.1;//************************************************************ */
+            this.exchange = 0.1;//****积分兑换rmb汇率***********测试********************************************* */
             axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopCarController/query.do", {//请求购物车数据
                 params: {
                     "wechat_user_id": id,

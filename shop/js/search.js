@@ -74,7 +74,10 @@ var vm = new Vue({
         }
     },
     created:function(){
-        this.search = sessionStorage.search_id;
+        this.search = sessionStorage.search_id;//对搜索内容进行非空验证
+        if(this.search==''||this.search==undefined||this.search=='undefined'){
+            this.search='';
+        }
         var search = this.search;
         
         axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopGoodsController/query.do",{//商品搜索功能

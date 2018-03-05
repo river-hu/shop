@@ -8,18 +8,18 @@ var vm = new Vue({
         shop:{}
     },
     methods:{
-        search_shop:function(){
+        search_shop:function(){//跳转搜索页
             sessionStorage.search_id=this.search;
             window.location.href="./searchshop.html"
         },
-        toggle:function(index){
+        toggle:function(index){//页面切换
             if(this.sortIndex==index){
                 this.sortIndex=-1;
             }else{
                 this.sortIndex=index;
             }         
         },  
-        goto:function(k){
+        goto:function(k){//跳转商品详情页
             window.location.href="./dec.html?id="+k.id;//页面跳转，附带商品id
         }
 

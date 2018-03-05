@@ -73,7 +73,7 @@ var vm = new Vue({
                 async: false,
                 dataType: 'json',
                 data: {
-                    "wechatUserId": vm.arr[vm.arrIndex].wechatUserId,    //测试用后期项目需要修改*********************************************
+                    "wechatUserId": vm.arr[vm.arrIndex].wechatUserId,   
                     "receiving_address_id": vm.arr[vm.arrIndex].id,
                     "orderJson": JSON.stringify(shopjson)
                 }
@@ -124,8 +124,13 @@ var vm = new Vue({
     },
     created: function () {
         var openid = localStorage.getItem("openid");
-        this.shop = JSON.parse(sessionStorage.buyshop);
-        // if(this.shop==''||this.shop==)
+        var buyshop = sessionStorage.buyshop;
+        if(buyshop==''||buyshop==undefined||buyshop=='undefined'){
+            alert("数据为空！");
+            window.location.href = "./index.html";
+        }
+        this.shop = JSON.parse(buyshop);
+        
         this.addall();
         axios.get("http://yunzhujia.qx1688.net/oneqrcode/wechatuserController/getOneById.do", {//获取用户积分信息
             params: {

@@ -60,7 +60,7 @@
                     
                 </div>
                  </transition>
-                <div class="am-panel am-panel-default active" v-if="!off">
+                <div class="am-panel am-panel-default active" v-if="!off" @click="add_address">
                     <div class="am-panel-bd">
                         <p>
                             <span>{{arr[arrIndex].person}}</span> {{arr[arrIndex].mobile}}

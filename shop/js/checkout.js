@@ -4,12 +4,12 @@ var vm = new Vue({
         off: false,
         arr: [
             {
-                person: "胡长江",
-                province: "河南",
-                city: "郑州",
-                district: "金水区",
-                detailAddress: "农业路政七街省汇中心B座710室",
-                mobile: "15039922892",
+                person: " ",
+                province: " ",
+                city: " ",
+                district: " ",
+                detailAddress: " ",
+                mobile: " ",
                 isdefault: 1
             }
         ],
@@ -18,7 +18,8 @@ var vm = new Vue({
         allnum: 0,
         allprice: 0,
         allintegration: 0,
-        integral: 0
+        integral: 0,
+        exchange:0.1
     },
     methods: {
         toggle: function () {
@@ -39,15 +40,19 @@ var vm = new Vue({
                 all += this.shop[i].shop.shop_goods_sorts[this.shop[i].select].integration * this.shop[i].num;
                 omroe += this.shop[i].shop.shop_goods_sorts[this.shop[i].select].originalPrice * this.shop[i].num;
             }
+            
             if (all < this.integral) {
+                console.log(omroe,all,mroe,0);
                 this.allprice = mroe;
                 this.allintegration = all;
             }
             if (this.integral == 0) {
+                console.log(omroe,all,mroe,1);
                 this.allprice = omroe;
                 this.allintegration = 0;
             }
             if (this.arr.length == 1 && all > this.integral) {
+                console.log(omroe,all,mroe,2);
                 this.allprice = omroe - this.exchange * this.integral;
                 this.allintegration = this.integral;
             }
@@ -120,6 +125,7 @@ var vm = new Vue({
     created: function () {
         var openid = localStorage.getItem("openid");
         this.shop = JSON.parse(sessionStorage.buyshop);
+        // if(this.shop==''||this.shop==)
         this.addall();
         axios.get("http://yunzhujia.qx1688.net/oneqrcode/wechatuserController/getOneById.do", {//获取用户积分信息
             params: {
@@ -137,6 +143,10 @@ var vm = new Vue({
             }).then(function (response) {
                 console.log(response.data);
                 vm.arr = response.data.data;
+                if(response.data.data==''){
+                    alert("收货地址为空，去添加收货地址");
+                    window.location.href = "./address.html";
+                }
                 for (var i in vm.arr) {
                     if (vm.arr[i].isdefault == 1) {
                         vm.arrIndex = i;

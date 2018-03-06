@@ -20,7 +20,15 @@ var vm = new Vue({
             }         
         },  
         goto:function(k){//跳转商品详情页
-            window.location.href="./dec.html?id="+k.id;//页面跳转，附带商品id
+            if(k.shop_goods_sorts.length!=0){
+                window.location.href="./dec.html?id="+k.id;//页面跳转，附带商品id
+            }else{
+                showModel({
+                    icon:"icon-warning",
+                    text:"暂无此商品的详细数据"
+                },1500)
+            }
+           
         }
 
     },

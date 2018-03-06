@@ -11,6 +11,15 @@ a{
     max-width: 580px;
     margin: 0 auto;
 }
+.app>.top{
+    text-align: center;
+    border-bottom: 1px solid #999;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    background: rgb(241, 241, 241);
+    color: #333;
+}
 .header{
     width: 100%;
     display: flex;
@@ -22,7 +31,7 @@ a{
     height: 50px;
     background: #fff;
     text-align: center;
-    padding: 10px 0;
+    padding: 25px 0;
     font-size: 18px;
     color: #666;
 }
@@ -34,8 +43,32 @@ a{
 }
 .content{
     width: 100%;
+    display: none;
 }
 .list{
     border-bottom: 1px dashed #999;
     height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding-left: 20px;
+    overflow: hidden;
+}
+.list span{
+    float: right;
+    margin-right: 20px;
+}
+.content .top{
+    background: rgb(241, 241, 241);
+    text-align: right;
+    border-bottom: 1px double #999;
+    height: 50px;
+    line-height: 50px;
+    box-sizing: border-box;
+    font-size: 20px;
+    padding-left: 20px;
+    text-align: center ;
+}
+.red{
+    color: red;
 }

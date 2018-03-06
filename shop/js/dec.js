@@ -69,6 +69,7 @@ var vm = new Vue({
         },
         get_ping: function () {
             if (this.pingOff) {
+                show_loading();//显示加载动画
                 axios.get("http://yunzhujia.qx1688.net/oneqrcode/shopGoodsEvaluationController/query.do", {
                     params: {
                         goodsId: vm.shop.id,
@@ -79,6 +80,7 @@ var vm = new Vue({
                     vm.pingOff = false;
                     vm.ping = response.data.data.list;
                     vm.toggle = false;
+                    hide_loading();//加载完成
                     console.log(response.data.data.list);
                 }).catch(function (error) {
                 })

@@ -16,7 +16,7 @@ function one() { //获取参数
 var openid = ''
 var access_token =''
 if(one().code){ //是否关注
-    
+   
     // jinzhi()
    
     if(openid=="undefined"||openid==undefined||openid==''){
@@ -35,8 +35,7 @@ if(one().code){ //是否关注
         })     
        
     }else{
-        openid=localStorage.getItem("openid");
-        
+        openid=localStorage.getItem("openid");  
     }
    
 }else{

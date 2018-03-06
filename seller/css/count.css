@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+.app{
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+}
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid #999;
+}
+.header div{
+    width: 50%;
+    height: 50px;
+    background: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 18px;
+    color: #666;
+}
+.header div>span{
+    color: red;
+}
+.frist{
+    border-right: 1px solid #999;
+}
+.content{
+    width: 100%;
+}
+.list{
+    border-bottom: 1px dashed #999;
+    height: 40px;
+}

@@ -28,7 +28,7 @@ var vm = new Vue({
           },
     },
     created: function () {
-        var openid = localStorage.getItem("openid");
+        var openid = sessionStorage.openid;
         axios.get("http://yunzhujia.qx1688.net/oneqrcode/wechatuserController/getOneById.do", {
             params: {
                 openid: openid

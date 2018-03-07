@@ -123,7 +123,7 @@ var vm = new Vue({
         }
     },
     created: function () {
-        var openid = localStorage.getItem("openid");
+        var openid = sessionStorage.openid;
         var buyshop = sessionStorage.buyshop;
         if(buyshop==''||buyshop==undefined||buyshop=='undefined'){
             alert("数据为空！");

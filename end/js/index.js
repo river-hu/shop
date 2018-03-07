@@ -1,4 +1,4 @@
-
+var openid = sessionStorage.openid;
 var vm = new Vue({
     el:'.app',
     data:{

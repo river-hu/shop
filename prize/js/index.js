@@ -1,4 +1,4 @@
-var openid=localStorage.getItem("openid");
+var openid = sessionStorage.openid;
 var qrcodeno= one().no;
 function show_loading(){//loading蒙层显示
     var model = document.getElementById("loading");

@@ -1,4 +1,4 @@
-var openid = localStorage.getItem("openid");
+var openid = sessionStorage.openid;
 var vm = new Vue({
     el:".box",
     data:{

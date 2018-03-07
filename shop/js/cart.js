@@ -195,7 +195,7 @@ var vm = new Vue({
     },
     created: function () {
         show_loading();
-        var openid = localStorage.getItem("openid");
+        var openid = sessionStorage.openid;
         axios.get("http://yunzhujia.qx1688.net/oneqrcode/wechatuserController/getOneById.do", {//获取用户积分信息
             params: {
                 openid: openid

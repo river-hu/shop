@@ -16,11 +16,11 @@ function one() { //获取参数
 var openid = ''
 var access_token =''
 if(one().code){ //是否关注
-   
+   console.log(1);
     // jinzhi()
-   
+   openid = sessionStorage.openid;
     if(openid=="undefined"||openid==undefined||openid==''){
-        
+        console.log(11);
         $.ajax({
             url:'http://yunzhujia.qx1688.net/oneqrcode/verifyWechatController/getOpenId.do?code='+one().code,
             type:'get',
@@ -29,16 +29,18 @@ if(one().code){ //是否关注
             success:function (res) {           
                 openid = res.openid
                 console.log(res);
-                access_token = res.access_token
-                localStorage.setItem("openid", openid);
+                access_token = res.access_token;
+                sessionStorage.openid = openid;
             }
         })     
        
     }else{
-        openid=localStorage.getItem("openid");  
+        console.log(12);
+         sessionStorage.openid = openid;
     }
    
 }else{
+    console.log(2);
     localStorage.setItem('item', location.href)
     console.log(window.location.href)
     window.location.href='http://yunzhujia.qx1688.net/oneqrcode/verifyWechatController/verifyLogin.do?url='+window.location.href;

@@ -1,4 +1,4 @@
-var openid = localStorage.getItem("openid");
+var openid = sessionStorage.openid;
 var app = new Vue({//蒙层实例
     el:".meng",
     data:{

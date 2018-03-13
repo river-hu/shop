@@ -211,7 +211,7 @@ position: relative;
 	margin-left: -.2rem;
 	margin-right: .8rem;
 }
-[ v-cloak]{
+[v-cloak]{
 	display: none;
 }
 #model{

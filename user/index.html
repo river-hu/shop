@@ -18,11 +18,12 @@
     <script src="../js/jquery-3.1.0.js"></script>
     <script src="../js/main.js"></script>
 </head>
+
 <body>
     <div class="container">
-            <div id="loading" >
-                    <img src="./font/loading.gif" alt="加载中...">
-                </div>
+        <div id="loading">
+            <img src="./font/loading.gif" alt="加载中...">
+        </div>
         <header data-am-widget="header" class="am-header am-header-default my-header">
             <h1 class="am-header-title">
                 <a href="#title-link" class="">会员中心</a>
@@ -41,75 +42,75 @@
         </div>
         <!--头部导航-->
         <div class="am-cf uchome-apps" style="background:#fff;">
-            <div class="prize"  >
-                <a href="../shop/cart.html">
+            <a class="prize" href="../shop/cart.html">
+                <span>
                     <span class="iconfont icon-publishgoods_fill icon_p jilu"></span>
                     <span class="my_p"> 购物车</span>
-                    <a href="./cart.html" class="p_to">
+                    <span href="../shop/cart.html" class="p_to">
                         <span class="iconfont icon-enter"></span>
-                    </a>
-                </a>
+                    </span>
+                </span>
 
-            </div>
-            <div class="prize"  @click="gotomybuy">
-                    <a href="../shop/mybuy.html">
-                <span class="iconfont icon-commodity icon_p jilu"></span>
-                <span class="my_p"> 我的订单</span>
-                <a href="../shop/mybuy.html" class="p_to">
-                    <span class="iconfont icon-enter"></span>
-                </a>
+            </a>
+            <a class="prize" href="../shop/mybuy.html">
+                <span>
+                    <span class="iconfont icon-commodity icon_p jilu"></span>
+                    <span class="my_p"> 我的订单</span>
+                    <span class="p_to">
+                        <span class="iconfont icon-enter"></span>
+                    </span>
             </a>
 
-            </div>
+            </a>
 
-            <div class="prize">
-                <a :href="'./prize.html?id='+openid">
+            <a class="prize" :href="'./prize.html?id='+openid">
+                <span>
                     <span class="iconfont icon-coupons icon_p"></span>
                     <span class="my_p"> 我的奖品</span>
-                    <a :href="'./prize.html?id='+id" class="p_to">
+                    <sapn class="p_to">
                         <span class="iconfont icon-enter "></span>
-                    </a>
-                </a>
-            </div>
-            <div class="prize">
-                    <a href="./record.html" >
-
-                <span class="iconfont icon-createtask icon_p jilu"></span>
-                <span class="my_p"> 中奖记录</span>
-                <a href="./record.html" class="p_to">
-                    <span class="iconfont icon-enter"></span>
-                </a>
+                    </sapn>
+                </sapn>
             </a>
+            <a class="prize" href="./record.html">
+                <span>
 
-            </div>
-            <div class="prize" >
-                    <a href="./integral.html" >
+                    <span class="iconfont icon-createtask icon_p jilu"></span>
+                    <span class="my_p"> 中奖记录</span>
+                    <span href="./record.html" class="p_to">
+                        <span class="iconfont icon-enter"></span>
+                    </span>
+                </span>
 
-                <span class="iconfont icon-activity icon_p jilu"></span>
-                <span class="my_p"> 积分记录</span>
-                <a href="./integral.html" class="p_to">
-                    <span class="iconfont icon-enter"></span>
-                </a>
             </a>
-            </div>
-            <div class="prize">
-                    <a href="./address.html">
+            <a class="prize" href="./integral.html">
+                <sapn>
 
-                <span class="iconfont icon-coordinates icon_p jilu"></span>
-                <span class="my_p"> 收货地址</span>
-                <a href="./address.html" class="p_to">
-                    <span class="iconfont icon-enter"></span>
-                </a>
+                    <span class="iconfont icon-activity icon_p jilu"></span>
+                    <span class="my_p"> 积分记录</span>
+                    <sapn href="./integral.html" class="p_to">
+                        <span class="iconfont icon-enter"></span>
+                    </sapn>
+                </sapn>
             </a>
+            <a class="prize" href="./address.html">
+                <sapn>
 
-            </div>
+                    <span class="iconfont icon-coordinates icon_p jilu"></span>
+                    <span class="my_p"> 收货地址</span>
+                    <span href="./address.html" class="p_to">
+                        <span class="iconfont icon-enter"></span>
+                    </sapn>
+                </sapn>
+
+            </a>
 
         </div>
 
 
 
         <!--底部-->
-        <div data-am-widget="navbar" class="am-navbar am-cf my-nav-footer "id="">
+        <div data-am-widget="navbar" class="am-navbar am-cf my-nav-footer " id="">
             <ul class="am-navbar-nav am-cf am-avg-sm-4 my-footer-ul">
                 <li>
                     <a href="../shop/index.html" class="">
@@ -136,7 +137,7 @@
                     </a>
                 </li>
             </ul>
-           
+
         </div>
     </div>
     <script src="js/my.js"></script>

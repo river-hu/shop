@@ -1,4 +1,5 @@
 .prize{
+    display: block;
     height: 57px;
     padding-left: .71875rem;
     max-width: 540px;
